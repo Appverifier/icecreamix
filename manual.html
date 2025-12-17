@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Usuario | Ice Cream Mix</title>
+    <!-- Icon Fonts -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        :root {
+            --primary: #FF0050;
+            --primary-dark: #cc0040;
+            --primary-light: #FFEEF2;
+            --text-main: #1F2937;
+            --text-secondary: #4B5563;
+            --bg-page: #F3F4F6;
+            --bg-card: #FFFFFF;
+            --border: #E5E7EB;
+            --success: #10B981;
+            --warning: #F59E0B;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background: var(--bg-page);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Layout */
+        .page-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 250px;
+            background: var(--bg-card);
+            border-right: 1px solid var(--border);
+            padding: 2rem 1.5rem;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            display: none;
+            /* Mobile default */
+        }
+
+        .sidebar-brand {
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            margin-bottom: 2rem;
+            display: block;
+            text-decoration: none;
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+            letter-spacing: -1px;
+        }
+
+        .lead {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        /* Cards and Sections */
+        .section-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Parameters Grid */
+        .params-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .param-card {
+            background: #F9FAFB;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .param-title {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .param-range {
+            font-size: 0.8rem;
+            background: #E5E7EB;
+            padding: 2px 8px;
+            border-radius: 12px;
+            color: #374151;
+        }
+
+        /* Tips and Callsout */
+        .callout {
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid;
+            margin-bottom: 1rem;
+        }
+
+        .callout-pro {
+            background: #F0F9FF;
+            border-color: #0284C7;
+            color: #0c4a6e;
+        }
+
+        .callout-warning {
+            background: #FEF3C7;
+            border-color: #D97706;
+            color: #92400E;
+        }
+
+        .screenshot-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .app-screenshot {
+            max-width: 100%;
+            max-height: 500px;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+        }
+
+        .screenshot-caption {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .sidebar {
+                display: block;
+            }
+
+            .main-content {
+                margin-left: 250px;
+                padding: 4rem;
+            }
+        }
+
+        /* Icon styles */
+        .mdi,
+        .feather {
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <a href="#" class="sidebar-brand">Ice Cream Mix</a>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#intro" class="nav-link active">Introducción</a></li>
+                <li class="nav-item"><a href="#parametros" class="nav-link">Parámetros Clave</a></li>
+                <li class="nav-item"><a href="#calculadora" class="nav-link">Calculadora y Formulación</a></li>
+                <li class="nav-item"><a href="#maestro" class="nav-link">Maestro Heladero</a></li>
+                <li class="nav-item"><a href="#ingredientes" class="nav-link">Mis Ingredientes</a></li>
+                <li class="nav-item"><a href="#produccion" class="nav-link">Control Overrun</a></li>
+                <li class="nav-item"><a href="#escalado" class="nav-link">Multiplicar Fórmula</a></li>
+            </ul>
+        </nav>
+
+        <!-- Content -->
+        <main class="main-content">
+
+            <section id="intro">
+                <h1>Manual de Usuario</h1>
+                <p class="lead">Domina la ciencia del helado artesanal con precisión y tecnología.</p>
+
+                <div class="section-card">
+                    <p><strong>Ice Cream Mix</strong> no es solo un recetario; es una herramienta de formulación
+                        profesional que equilibra tus recetas en tiempo real. Este manual te explicará cómo interpretar
+                        los datos técnicos para conseguir la textura perfecta.</p>
+
+                    <div class="screenshot-container">
+                        <img src="assets/home_screen.png" alt="Pantalla de Inicio" class="app-screenshot">
+                        <p class="screenshot-caption">Pantalla Principal: Tu centro de control</p>
+                    </div>
+
+                    <div class="params-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                        <div class="param-card">
+                            <div class="param-title">1. Crear Manualmente</div>
+                            <p>Diseña tu receta desde cero. Tú tienes el control total de cada gramo de ingrediente.</p>
+                        </div>
+                        <div class="param-card">
+                            <div class="param-title">2. Maestro Heladero</div>
+                            <p>El asistente inteligente que crea recetas equilibradas por ti partiendo de un sabor.</p>
+                        </div>
+                        <div class="param-card">
+                            <div class="param-title">3. Inicio Rápido</div>
+                            <p>Acceso directo a bases pre-formuladas (Blanca, Chocolate, Vegana) listas para usar.</p>
+                        </div>
+                        <div class="param-card">
+                            <div class="param-title">4. Tip del Maestro</div>
+                            <p>Consejos diarios de nivel experto para mejorar tu técnica y conocimientos sobre
+                                heladería.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="parametros">
+                <h2>1. Parámetros Técnicos de Equilibrio</h2>
+                <p>El corazón de la app. Entender estas siglas es clave para controlar el resultado final.</p>
+
+                <div class="params-grid">
+                    <!-- POD -->
+                    <div class="param-card">
+                        <div class="param-title">
+                            POD (Poder Edulcorante)
+                            <span class="param-range">10-25%</span>
+                        </div>
+                        <p>Mide la sensación de dulzor. La referencia es la Sacarosa (POD=100).</p>
+                        <ul>
+                            <li><strong>Bajo:</strong> Helado soso.</li>
+                            <li><strong>Alto:</strong> Empalagoso, tapa otros sabores.</li>
+                        </ul>
+                    </div>
+
+                    <!-- PAC -->
+                    <div class="param-card">
+                        <div class="param-title">
+                            PAC (Poder Anticongelante)
+                            <span class="param-range">200-400 pts</span>
+                        </div>
+                        <p>Controla la dureza a temperatura de servicio (-11° a -18°C).</p>
+                        <ul>
+                            <li><strong>Bajo:</strong> Helado duro, cristalizado.</li>
+                            <li><strong>Alto:</strong> Helado blando, se derrite rápido.</li>
+                        </ul>
+                    </div>
+
+                    <!-- MG -->
+                    <div class="param-card">
+                        <div class="param-title">
+                            MG (Materia Grasa)
+                            <span class="param-range">0-12%</span>
+                        </div>
+                        <p>Aporta cremosidad, cuerpo y sensación térmica cálida.</p>
+                        <ul>
+                            <li><strong>Helado Crema:</strong> 6-10% (láctea).</li>
+                            <li><strong>Sorbete:</strong> 0% (sin grasa).</li>
+                        </ul>
+                    </div>
+
+                    <!-- LPD -->
+                    <div class="param-card">
+                        <div class="param-title">
+                            LPD (Sólidos Lácteos)
+                            <span class="param-range">6-10%</span>
+                        </div>
+                        <p>Las proteínas y la lactosa que dan estructura y aireación (overrun) al helado.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="calculadora">
+                <h2>2. Crear una Fórmula Manual</h2>
+                <div class="section-card">
+                    <h3>El Gráfico de Equilibrio</h3>
+                    <div class="screenshot-container">
+                        <img src="assets/balance_chart.png" alt="Gráfico de Equilibrio" class="app-screenshot">
+                        <p class="screenshot-caption">El radar te muestra si tu receta está perfecta (verde) o necesita
+                            ajustes.</p>
+                    </div>
+
+                    <p>Al visualizar una receta, verás el gráfico de radar:</p>
+                    <ul>
+                        <li><span style="color:#10B981; font-weight:bold;">Zona Verde:</span> ¡Perfecto! Estás dentro de
+                            los parámetros ideales.</li>
+                        <li><span style="color:#EF4444; font-weight:bold;">Zona Roja:</span> La receta está
+                            desequilibrada (ej: demasiado dura o blanda).</li>
+                    </ul>
+
+                    <h3>Edición en Tiempo Real</h3>
+                    <div class="screenshot-container">
+                        <img src="assets/edit_formula.png" alt="Pantalla de Edición" class="app-screenshot">
+                        <p class="screenshot-caption">Ajusta gramos y ve cómo cambian los valores al instante.</p>
+                    </div>
+
+                    <p>En la pantalla de edición puedes:</p>
+                    <ol>
+                        <li>Ver los semáforos de calidad y <strong>guiarte por los parámetros aconsejados</strong> de
+                            POD, PAC, MG, ST, LPD y Agua.</li>
+                        <li>Añadir ingredientes pulsando el botón "+".</li>
+                        <li>Leer las <strong>Sugerencias del Maestro</strong> en la parte inferior si algo falla (ej:
+                            "El PAC es alto, reduce dextrosa").</li>
+                    </ol>
+
+                    <div class="callout callout-pro">
+                        <strong>Tip Profesional:</strong> Haz caso a la Temperatura de Servicio (TP). Si quieres servir
+                        a -14°C, ajusta el PAC para que la app te dé luz verde en esa temperatura.
+                    </div>
+                </div>
+            </section>
+
+            <section id="maestro">
+                <h2>3. El Maestro Heladero <span class="mdi mdi-chef-hat" style="color:var(--primary)"></span></h2>
+                <p>Nuestro sistema avanzado genera recetas equilibradas automáticamente.</p>
+
+                <div class="section-card">
+                    <div class="screenshot-container">
+                        <img src="assets/maestro_setup.png" alt="Configuración Maestro" class="app-screenshot">
+                        <p class="screenshot-caption">Elige sabor, base y calidad. El Maestro Heladero hace el resto.
+                        </p>
+                    </div>
+
+                    <h3>Cómo funciona</h3>
+                    <ol>
+                        <li>Selecciona <strong>Formulación Estándar</strong> (recetas clásicas) o
+                            <strong>Profesional</strong> (textura premium).
+                        </li>
+                        <li>Escribe el sabor (ej: "Pistacho", "Fresa").</li>
+                        <li>Elige si quieres base de Agua (Sorbete) o Láctea (Helado).</li>
+                        <li>Pulsa "Generar Fórmula" y en segundos tendrás la receta equilibrada.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section id="ingredientes">
+                <h2>4. Mis Ingredientes (Base de Datos) <span class="mdi mdi-database"
+                        style="color:var(--primary)"></span></h2>
+
+                <div class="section-card">
+                    <h3>Gestión de Ingredientes</h3>
+                    <p>Organiza y edita tu despensa digital. Usa el <strong>buscador</strong> superior para encontrar
+                        rápidamente cualquier producto.</p>
+
+                    <div class="screenshot-container">
+                        <img src="assets/ingredients_list.png" alt="Lista de Ingredientes" class="app-screenshot">
+                        <p class="screenshot-caption">Filtra entre ingredientes del sistema y tus propias creaciones.
+                        </p>
+                    </div>
+
+                    <ul>
+                        <li><span
+                                style="background:#E5E7EB; color:#374151; padding:2px 8px; border-radius:12px; font-size:0.85em; font-weight:600;">Sistema</span>
+                            <strong>Ingredientes Pre-cargados:</strong> Base de datos verificada con los productos más
+                            comunes.
+                        </li>
+                        <li><span
+                                style="background:#FCE7F3; color:#BE185D; padding:2px 8px; border-radius:12px; font-size:0.85em; font-weight:600;">Míos</span>
+                            <strong>Tus Ingredientes:</strong> Los que tú has añadido manualmente o escaneado.
+                        </li>
+                    </ul>
+                    <p><em>Nota: Puedes pulsar en cualquier ingrediente para editar sus valores si lo necesitas.</em>
+                    </p>
+
+                    <h3 style="margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">Añadir Nuevo
+                        Ingrediente</h3>
+                    <p>Personaliza tu base de datos con tus propios productos. Tienes 4 formas de añadir un nuevo
+                        ingrediente:</p>
+
+                    <div class="screenshot-container">
+                        <img src="assets/new_ingredient_methods.png" alt="Métodos de creación de ingredientes"
+                            class="app-screenshot">
+                        <p class="screenshot-caption">Elige el método que mejor se adapte a ti.</p>
+                    </div>
+
+                    <div class="params-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+                        <div class="param-card">
+                            <div class="param-title">
+                                <span><i data-feather="edit-2"></i> Manual</span>
+                            </div>
+                            <p style="font-size: 0.9rem">Introduce los valores POD, PAC y demás valores a mano.</p>
+                        </div>
+
+                        <div class="param-card">
+                            <div class="param-title">
+                                <span><i data-feather="camera"></i> Escanear</span>
+                            </div>
+                            <p style="font-size: 0.9rem">Usa la cámara para leer la etiqueta y calcula automáticamente
+                                los valores.</p>
+                        </div>
+
+                        <div class="param-card">
+                            <div class="param-title">
+                                <span><i data-feather="image"></i> Importar</span>
+                            </div>
+                            <p style="font-size: 0.9rem">Sube una foto de la ficha técnica desde tu galería.</p>
+                        </div>
+
+                        <div class="param-card">
+                            <div class="param-title">
+                                <span><i data-feather="sliders"></i> Conversor de tabla nutricional</span>
+                            </div>
+                            <p style="font-size: 0.9rem">Calcula POD/PAC aproximados de azúcares, sólidos y grasas desde
+                                tablas nutricionales.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Tu Recetario</h3>
+                <div class="section-card">
+                    <div class="screenshot-container">
+                        <img src="assets/recipe_book.png" alt="Recetario" class="app-screenshot">
+                        <p class="screenshot-caption">Tus fórmulas organizadas y siempre a mano.</p>
+                    </div>
+                    <p>Guarda tus creaciones favoritas, duplícalas para hacer variaciones o compártelas como PDF.</p>
+                </div>
+            </section>
+
+            <section id="produccion">
+                <h2>5. Control de Producción (Overrun) <span class="mdi mdi-ice-cream"
+                        style="color:var(--primary)"></span></h2>
+                <div class="section-card">
+                    <h3>¿Qué es el Overrun?</h3>
+                    <p>Es la cantidad de aire que incorporas a tu helado durante la mantecación. El aire hace que el
+                        helado sea cálido y suave.</p>
+
+                    <div class="screenshot-container">
+                        <img src="assets/overrun.png" alt="Calculadora de Overrun" class="app-screenshot">
+                        <p class="screenshot-caption">Mide el rendimiento real de tu mantecadora.</p>
+                    </div>
+
+                    <h3>Cómo calcularlo con la App</h3>
+                    <ol>
+                        <li>Pesa un recipiente lleno de tu <strong>mezcla líquida</strong> (ej: 108g).</li>
+                        <li>Manteca el helado y llena <strong>EL MISMO recipiente</strong> con el helado ya hecho (a
+                            ras).</li>
+                        <li>Pesa el helado (ej: 80g).</li>
+                        <li>Introduce ambos valores en la calculadora de la app.</li>
+                    </ol>
+                    <div class="callout callout-pro">
+                        <strong>Objetivo:</strong> Un helado artesanal suele tener entre <strong>30-40%</strong> de
+                        Overrun. Menos es muy denso, más es demasiado aireado (tipo industrial).
+                    </div>
+                </div>
+            </section>
+
+            <section id="escalado">
+                <h2>6. Multiplicar Fórmula <i data-feather="maximize-2" style="color:var(--primary)"></i></h2>
+                <div class="section-card">
+                    <p>¿Tienes una receta perfecta para 1kg pero necesitas producir 50kg? No uses la calculadora a mano.
+                    </p>
+
+                    <div class="screenshot-container">
+                        <img src="assets/multiplier.png" alt="Multiplicar Fórmula" class="app-screenshot">
+                        <p class="screenshot-caption">Convierte tu receta de laboratorio a producción industrial en un
+                            click.</p>
+                    </div>
+
+                    <h3>Pasos:</h3>
+                    <ol>
+                        <li>Entra en tu fórmula guardada en el Recetario.</li>
+                        <li>Pulsa la opción <strong>"Multiplicar Fórmula"</strong>.</li>
+                        <li>Usa los <strong>botones rápidos (x2, x3, x4, x5)</strong> para multiplicar al instante.</li>
+                        <li>O introduce manualmente el <strong>Peso Total Objetivo</strong> (ej: 5000g).</li>
+                        <li>La app recalculará instantáneamente todos los ingredientes manteniendo el equilibrio
+                            perfecto.</li>
+                    </ol>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        feather.replace()
+    </script>
+</body>
+
+</html>
