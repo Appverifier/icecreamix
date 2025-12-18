@@ -242,6 +242,7 @@
                 <li class="nav-item"><a href="#calculadora" class="nav-link">Calculadora y Formulación</a></li>
                 <li class="nav-item"><a href="#maestro" class="nav-link">Maestro Heladero</a></li>
                 <li class="nav-item"><a href="#ingredientes" class="nav-link">Mis Ingredientes</a></li>
+                <li class="nav-item"><a href="#recetario" class="nav-link">Tu Recetario</a></li>
                 <li class="nav-item"><a href="#produccion" class="nav-link">Control Overrun</a></li>
                 <li class="nav-item"><a href="#escalado" class="nav-link">Multiplicar Fórmula</a></li>
             </ul>
@@ -477,13 +478,99 @@
                     </div>
                 </div>
 
-                <h3>Tu Recetario</h3>
+                <h3 id="recetario">Tu Recetario</h3>
                 <div class="section-card">
                     <div class="screenshot-container">
                         <img src="assets/recipe_book.png" alt="Recetario" class="app-screenshot">
                         <p class="screenshot-caption">Tus fórmulas organizadas y siempre a mano.</p>
                     </div>
                     <p>Guarda tus creaciones favoritas, duplícalas para hacer variaciones o compártelas como PDF.</p>
+
+                    <h4 style="margin-top: 1.5rem;">Acciones Rápidas</h4>
+                    <p>Cada receta en tu recetario tiene botones de acción rápida:</p>
+                    <ul>
+                        <li><span class="mdi mdi-bell" style="color:#FFB74D;"></span> <strong>Alarma de
+                                Maduración:</strong> Programa un recordatorio para cuando tu mezcla esté lista.</li>
+                        <li><span class="mdi mdi-star" style="color:#FFB74D;"></span> <strong>Favoritos:</strong> Marca
+                            tus recetas más usadas para encontrarlas rápido.</li>
+                        <li><span class="mdi mdi-content-copy" style="color:#6B7280;"></span> <strong>Duplicar:</strong>
+                            Crea una copia para experimentar sin perder la original.</li>
+                        <li><span class="mdi mdi-delete" style="color:#EF4444;"></span> <strong>Eliminar:</strong> Borra
+                            las recetas que ya no necesites.</li>
+                    </ul>
+
+                    <h4 style="margin-top: 1.5rem; border-top: 1px solid var(--border); padding-top: 1rem;">
+                        <span class="mdi mdi-bell-ring" style="color:#FFB74D;"></span> Alarma de Maduración
+                    </h4>
+                    <p>La maduración es el tiempo de reposo en frío (2-4°C) que necesita tu mezcla para hidratar
+                        proteínas y estabilizantes. Desde el Recetario puedes programar alarmas para no olvidarte de
+                        mantecar.</p>
+
+                    <div class="screenshot-container">
+                        <img src="assets/maturation_alarm.png" alt="Alarma de Maduración" class="app-screenshot">
+                        <p class="screenshot-caption">Configura alarmas con tiempos predeterminados o personalizados.
+                        </p>
+                    </div>
+
+                    <h5 style="margin-top: 1.5rem; margin-bottom: 0.75rem; font-size: 0.95rem;">Estados de la Alarma
+                    </h5>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem;">
+                        <div
+                            style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #FFF8E1; border-radius: 8px; border-left: 4px solid #FFB74D;">
+                            <span class="mdi mdi-bell-ring" style="font-size: 24px; color: #FFB74D;"></span>
+                            <div>
+                                <strong style="color: #E65100;">Madurando</strong>
+                                <p style="margin: 0; font-size: 0.9rem; color: #5D4037;">La maduración está en proceso.
+                                    Verás el tiempo restante en la tarjeta.</p>
+                            </div>
+                        </div>
+                        <div
+                            style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #E8F5E9; border-radius: 8px; border-left: 4px solid #4CAF50;">
+                            <span class="mdi mdi-bell-ring" style="font-size: 24px; color: #4CAF50;"></span>
+                            <div>
+                                <strong style="color: #1B5E20;">Madurado</strong>
+                                <p style="margin: 0; font-size: 0.9rem; color: #2E7D32;">¡La maduración se ha
+                                    completado! Tu mezcla está lista para mantecar.</p>
+                            </div>
+                        </div>
+                        <div
+                            style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #FFF3E0; border-radius: 8px; border-left: 4px solid #FFB74D;">
+                            <span class="mdi mdi-bell-plus-outline" style="font-size: 24px; color: #FFB74D;"></span>
+                            <div>
+                                <strong style="color: #E65100;">Sin alarma</strong>
+                                <p style="margin: 0; font-size: 0.9rem; color: #5D4037;">Esta receta no tiene alarma
+                                    asignada. Toca para programar una.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="params-grid" style="grid-template-columns: 1fr 1fr; margin-top: 1rem;">
+                        <div class="param-card" style="border-left: 4px solid #4ECDC4;">
+                            <div class="param-title">
+                                <span><span class="mdi mdi-ice-cream" style="color:#4ECDC4;"></span> Helado</span>
+                            </div>
+                            <p style="margin-bottom: 0.5rem;"><strong>Mínimo:</strong> 4 horas</p>
+                            <p style="margin-bottom: 0.5rem;"><strong style="color:#4ECDC4;">Óptimo:</strong> 8-12 horas
+                            </p>
+                            <p style="margin-bottom: 0;"><strong>Máximo:</strong> 72 horas</p>
+                        </div>
+                        <div class="param-card" style="border-left: 4px solid #FF6B6B;">
+                            <div class="param-title">
+                                <span><span class="mdi mdi-fruit-pineapple" style="color:#FF6B6B;"></span>
+                                    Sorbete</span>
+                            </div>
+                            <p style="margin-bottom: 0.5rem;"><strong>Mínimo:</strong> 2 horas</p>
+                            <p style="margin-bottom: 0.5rem;"><strong style="color:#FF6B6B;">Óptimo:</strong> 4-6 horas
+                            </p>
+                            <p style="margin-bottom: 0;"><strong>Máximo:</strong> 24-48 horas</p>
+                        </div>
+                    </div>
+
+                    <div class="callout callout-pro" style="margin-top: 1rem;">
+                        <strong>Barra de Progreso:</strong> Mientras la alarma está activa, verás una barra de progreso
+                        y el estado de maduración directamente en la tarjeta de la receta (MADURANDO, PUNTO ÓPTIMO o
+                        MADURADO).
+                    </div>
                 </div>
             </section>
 
