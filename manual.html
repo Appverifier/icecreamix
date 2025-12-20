@@ -104,36 +104,67 @@
 
         /* Search Bar */
         .search-container {
-            position: relative;
-            margin-bottom: 1.5rem;
-        }
-
-        .search-container input {
-            width: 100%;
-            padding: 0.6rem 1rem 0.6rem 2.5rem;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 0.85rem;
-            outline: none;
-            transition: all 0.2s;
+            display: flex;
+            align-items: center;
             background: #F9FAFB;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 2px;
+            margin-bottom: 1.5rem;
+            transition: all 0.2s;
         }
 
-        .search-container input:focus {
+        .search-container:focus-within {
             border-color: var(--primary);
             background: white;
             box-shadow: 0 0 0 3px var(--primary-light);
         }
 
-        .search-container .search-icon {
-            position: absolute;
-            left: 0.75rem;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 16px;
-            height: 16px;
+        .search-container input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 0.6rem 0.75rem;
+            font-size: 0.85rem;
+            outline: none;
+            color: var(--text-main);
+            width: 100%;
+        }
+
+        .search-btn {
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
             color: var(--text-secondary);
-            pointer-events: none;
+            transition: all 0.2s;
+        }
+
+        .search-btn:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .search-btn.primary {
+            color: var(--primary);
+        }
+
+        .search-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        #clearSearch {
+            display: none;
+        }
+
+        .clear-search svg {
+            width: 14px;
+            height: 14px;
         }
 
         #noResults {
@@ -144,6 +175,58 @@
             background: white;
             border-radius: 12px;
             border: 1px dashed var(--border);
+        }
+
+        /* Responsive Flex Row */
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: #F9FAFB;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-row.warning {
+            background: #FFF5F7;
+            border-color: #FFE4E8;
+        }
+
+        .info-row.success {
+            background: #F0FDF4;
+            border-color: #DCFCE7;
+        }
+
+        .info-row.error {
+            background: #FEF2F2;
+            border-color: #FEE2E2;
+        }
+
+        .info-row.status {
+            padding: 12px;
+            border-radius: 8px;
+            gap: 12px;
+        }
+
+        @media (max-width: 767px) {
+            .info-row {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 1rem !important;
+                padding: 1rem !important;
+            }
+
+            .info-row img {
+                width: 100% !important;
+                max-width: none !important;
+                margin-bottom: 0.5rem;
+            }
+
+            .info-row>div {
+                width: 100%;
+            }
         }
 
         .nav-item {
@@ -464,8 +547,13 @@
                 <span>Ice Cream Mix</span>
             </a>
             <div class="search-container">
-                <i data-feather="search" class="search-icon"></i>
-                <input type="text" id="manualSearch" placeholder="Buscar en el manual...">
+                <input type="text" id="manualSearch" placeholder="Buscar temas, ingredientes...">
+                <button id="clearSearch" class="search-btn" title="Limpiar">
+                    <i data-feather="x"></i>
+                </button>
+                <button id="searchBtn" class="search-btn primary" title="Buscar">
+                    <i data-feather="search"></i>
+                </button>
             </div>
             <ul class="nav-list">
                 <li class="nav-item"><a href="#intro" class="nav-link active">Introducción</a></li>
@@ -773,8 +861,7 @@
                     <h3>Gestión de Ingredientes</h3>
                     <p>Añade y ajusta tus materias primas con precisión profesional:</p>
                     <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
-                        <div
-                            style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: #F9FAFB; border-radius: 8px;">
+                        <div class="info-row">
                             <img src="assets/icon_eye.png" style="width: 32px;" alt="Vista Rápida">
                             <div>
                                 <strong>Vista Rápida:</strong> Toca el icono del ojo para ver los parámetros
@@ -784,8 +871,7 @@
                                     alt="Quick View Modal">
                             </div>
                         </div>
-                        <div
-                            style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #FEF2F2; border-radius: 8px;">
+                        <div class="info-row error">
                             <img src="assets/icon_trash.png" style="width: 32px;" alt="Eliminar">
                             <div>
                                 <strong>Eliminar:</strong> Usa la papelera rosa para quitar ingredientes de la
@@ -825,8 +911,7 @@
                     <p>Cuando la app detecta un desequilibrio técnico (valores en rosa), el Maestro te ofrecerá
                         soluciones automáticas:</p>
                     <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1rem;">
-                        <div
-                            style="display: flex; align-items: start; gap: 1.5rem; padding: 1rem; background: #FFF5F7; border-radius: 8px; border: 1px solid #FFE4E8;">
+                        <div class="info-row warning">
                             <img src="assets/icon_suggestions.png" style="width: 40px; border-radius: 4px;"
                                 alt="Icono Sugerencias">
                             <div>
@@ -882,8 +967,7 @@
 
                     <h3>Configuración de la Fórmula</h3>
                     <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2rem;">
-                        <div
-                            style="display: flex; align-items: center; gap: 1.5rem; padding: 1rem; background: #F9FAFB; border-radius: 8px;">
+                        <div class="info-row">
                             <img src="assets/maestro_configuration.png"
                                 style="width: 100%; max-width: 300px; border-radius: 8px;"
                                 alt="Configuración de Parámetros">
@@ -1090,8 +1174,7 @@
                         <h5 style="margin-top: 1.5rem; margin-bottom: 0.75rem; font-size: 0.95rem;">Estados de la Alarma
                         </h5>
                         <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem;">
-                            <div
-                                style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #FFF8E1; border-radius: 8px; border-left: 4px solid #FFB74D;">
+                            <div class="info-row status" style="background: #FFF8E1; border-left: 4px solid #FFB74D;">
                                 <span class="mdi mdi-bell-ring" style="font-size: 24px; color: #FFB74D;"></span>
                                 <div>
                                     <strong style="color: #E65100;">Madurando</strong>
@@ -1100,8 +1183,7 @@
                                         Verás el tiempo restante en la tarjeta.</p>
                                 </div>
                             </div>
-                            <div
-                                style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #E8F5E9; border-radius: 8px; border-left: 4px solid #4CAF50;">
+                            <div class="info-row status" style="background: #E8F5E9; border-left: 4px solid #4CAF50;">
                                 <span class="mdi mdi-bell-ring" style="font-size: 24px; color: #4CAF50;"></span>
                                 <div>
                                     <strong style="color: #1B5E20;">Madurado</strong>
@@ -1109,8 +1191,7 @@
                                         completado! Tu mezcla está lista para mantecar.</p>
                                 </div>
                             </div>
-                            <div
-                                style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #F5F5F5; border-radius: 8px; border-left: 4px solid #9E9E9E;">
+                            <div class="info-row status" style="background: #F5F5F5; border-left: 4px solid #9E9E9E;">
                                 <span class="mdi mdi-bell-plus-outline" style="font-size: 24px; color: #4B5563;"></span>
                                 <div>
                                     <strong style="color: #4B5563;">Sin alarma</strong>
@@ -1333,26 +1414,51 @@
 
         // Search Functionality
         const searchInput = document.getElementById('manualSearch');
+        const clearSearch = document.getElementById('clearSearch');
+        const searchBtn = document.getElementById('searchBtn');
         const noResults = document.getElementById('noResults');
 
-        searchInput.addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase().trim();
+        function performSearch(shouldScroll = true) {
+            const term = searchInput.value.toLowerCase().trim();
+            const words = term.split(/\s+/).filter(w => w.length > 0);
             let hasResults = false;
 
-            sections.forEach(section => {
-                // Intro is always visible or based on title
-                const title = section.querySelector('h1, h2, h3')?.innerText.toLowerCase() || "";
-                const content = section.innerText.toLowerCase();
+            clearSearch.style.display = term ? 'flex' : 'none';
 
-                if (term === "" || title.includes(term) || content.includes(term)) {
-                    section.style.display = 'block';
-                    hasResults = true;
-                } else {
-                    section.style.display = 'none';
+            sections.forEach(section => {
+                const text = section.innerText.toLowerCase();
+                const sectionId = section.getAttribute('id');
+                const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+
+                const matches = words.length === 0 || words.every(word => text.includes(word));
+
+                section.style.display = matches ? 'block' : 'none';
+                if (navLink && navLink.parentElement) {
+                    navLink.parentElement.style.display = matches ? 'block' : 'none';
                 }
+
+                if (matches) hasResults = true;
             });
 
             noResults.style.display = hasResults ? 'none' : 'block';
+            if (shouldScroll && term !== "") window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        searchInput.addEventListener('input', () => {
+            if (searchInput.value.trim() === "") performSearch(false);
+            else clearSearch.style.display = 'flex';
+        });
+
+        searchBtn.addEventListener('click', () => performSearch(true));
+
+        clearSearch.addEventListener('click', () => {
+            searchInput.value = '';
+            performSearch(false);
+            searchInput.focus();
+        });
+
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') performSearch(true);
         });
     </script>
 </body>
