@@ -46,8 +46,38 @@
             position: fixed;
             height: 100vh;
             overflow-y: auto;
-            display: none;
-            /* Mobile default */
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            transform: translateX(-100%);
+            display: block;
+        }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+        /* Mobile Header/Menu */
+        .mobile-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-card);
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 900;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
         }
 
         .sidebar-brand {
@@ -98,10 +128,11 @@
 
         /* Typography */
         h1 {
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             margin-bottom: 0.5rem;
             color: var(--text-main);
             letter-spacing: -1px;
+            line-height: 1.2;
         }
 
         .lead {
@@ -111,9 +142,9 @@
         }
 
         h2 {
-            font-size: 1.75rem;
-            margin-top: 3rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
             color: var(--text-main);
             border-bottom: 2px solid var(--border);
             padding-bottom: 0.5rem;
@@ -209,15 +240,48 @@
             font-style: italic;
         }
 
-        /* Responsive */
+        /* Responsive adjustments */
+        @media (max-width: 767px) {
+            .main-content {
+                padding: 1.5rem 1rem;
+            }
+
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start !important;
+                gap: 0.5rem !important;
+            }
+
+            .header-container img {
+                height: 40px !important;
+            }
+
+            .section-card {
+                padding: 1.25rem;
+            }
+        }
+
         @media (min-width: 768px) {
             .sidebar {
-                display: block;
+                transform: translateX(0);
             }
 
             .main-content {
                 margin-left: 250px;
                 padding: 4rem;
+            }
+
+            .mobile-header {
+                display: none;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+                margin-top: 3rem;
             }
         }
 
@@ -290,10 +354,36 @@
             background: #F0FDFA;
             text-align: center;
         }
+
+        /* Overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 950;
+        }
+
+        .overlay.active {
+            display: block;
+        }
     </style>
 </head>
 
 <body>
+
+    <div class="mobile-header">
+        <a href="#" style="text-decoration: none; color: var(--primary); font-weight: 800; font-size: 1rem;">ICE CREAM
+            MIX</a>
+        <button class="menu-toggle" id="menuToggle">
+            <i data-feather="menu"></i>
+        </button>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
 
     <div class="page-wrapper">
         <!-- Sidebar -->
@@ -314,7 +404,8 @@
         <main class="main-content">
 
             <section id="intro">
-                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                <div class="header-container"
+                    style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
                     <img src="assets/logo.png" style="height: 60px; width: auto;" alt="Ice Cream Mix Logo">
                     <h1 style="margin: 0;">Manual de Usuario</h1>
                 </div>
@@ -1094,7 +1185,54 @@
     </div>
 
     <script>
-        feather.replace()
+        // Initialize Feather icons
+        feather.replace();
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.querySelector('.sidebar');
+        const overlay = document.getElementById('overlay');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function toggleMenu() {
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        // Close menu when a link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Simple active state observer
+        const sections = document.querySelectorAll('section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.3
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${entry.target.id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
     </script>
 </body>
 
