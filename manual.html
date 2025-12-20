@@ -102,6 +102,50 @@
             margin: 0;
         }
 
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 0.6rem 1rem 0.6rem 2.5rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            outline: none;
+            transition: all 0.2s;
+            background: #F9FAFB;
+        }
+
+        .search-container input:focus {
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        .search-container .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            color: var(--text-secondary);
+            pointer-events: none;
+        }
+
+        #noResults {
+            display: none;
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-secondary);
+            background: white;
+            border-radius: 12px;
+            border: 1px dashed var(--border);
+        }
+
         .nav-item {
             margin-bottom: 0.5rem;
         }
@@ -419,6 +463,10 @@
                 <img src="assets/logo.png" style="height: 40px; width: auto;" alt="Logo">
                 <span>Ice Cream Mix</span>
             </a>
+            <div class="search-container">
+                <i data-feather="search" class="search-icon"></i>
+                <input type="text" id="manualSearch" placeholder="Buscar en el manual...">
+            </div>
             <ul class="nav-list">
                 <li class="nav-item"><a href="#intro" class="nav-link active">Introducción</a></li>
                 <li class="nav-item"><a href="#calculadora" class="nav-link">Panel de Indicadores</a></li>
@@ -432,6 +480,15 @@
 
         <!-- Content -->
         <main class="main-content">
+            <div id="noResults">
+                <i data-feather="search" style="width: 48px; height: 48px; margin-bottom: 1rem; opacity: 0.3;"></i>
+                <p>No se encontraron resultados para tu búsqueda.</p>
+                <button
+                    onclick="document.getElementById('manualSearch').value=''; document.getElementById('manualSearch').dispatchEvent(new Event('input'));"
+                    style="color: var(--primary); background: none; border: none; font-weight: 600; cursor: pointer;">
+                    Limpiar búsqueda
+                </button>
+            </div>
 
             <section id="intro">
                 <h1 style="margin: 0;">Manual de Usuario</h1>
@@ -746,11 +803,23 @@
                     <p>Bajo los selectores principales tienes accesos rápidos para:</p>
                     <ul>
                         <li><strong>Modo Lista:</strong> Alterna entre la vista de edición y de solo lectura.</li>
-                        <li><strong>Gráfico de Balance:</strong> Abre el radar de equilibrio para ver visualmente si tu
-                            receta está en la "zona verde".</li>
+                        <li><strong>Normalizar a 1000g:</strong> Ajusta automáticamente todas las cantidades para que el
+                            total de tu mezcla sea de 1kg exacto.</li>
                         <li><strong>Deshacer/Rehacer:</strong> ¿Te has equivocado con un gramaje? Vuelve atrás
                             fácilmente.</li>
                     </ul>
+
+                    <h3>Ver Gráfico de Balance</h3>
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <img src="assets/balance_button.png" style="width: 100%; max-width: 250px; margin-bottom: 1rem;"
+                            alt="Ver Gráfico de Balance">
+                        <br>
+                        <img src="assets/balance_chart.png"
+                            style="width: 100%; max-width: 400px; border-radius: 12px; border: 1px solid var(--border);"
+                            alt="Radar de Equilibrio">
+                        <p class="screenshot-caption">El radar visual te permite ver de un vistazo si los 6 parámetros
+                            clave están dentro de la zona verde (ideal).</p>
+                    </div>
 
                     <h3>Sugerencias del Maestro</h3>
                     <p>Cuando la app detecta un desequilibrio técnico (valores en rosa), el Maestro te ofrecerá
@@ -1261,6 +1330,30 @@
         }, observerOptions);
 
         sections.forEach(section => observer.observe(section));
+
+        // Search Functionality
+        const searchInput = document.getElementById('manualSearch');
+        const noResults = document.getElementById('noResults');
+
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase().trim();
+            let hasResults = false;
+
+            sections.forEach(section => {
+                // Intro is always visible or based on title
+                const title = section.querySelector('h1, h2, h3')?.innerText.toLowerCase() || "";
+                const content = section.innerText.toLowerCase();
+
+                if (term === "" || title.includes(term) || content.includes(term)) {
+                    section.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+
+            noResults.style.display = hasResults ? 'none' : 'block';
+        });
     </script>
 </body>
 
