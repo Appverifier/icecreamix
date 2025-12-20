@@ -227,6 +227,69 @@
             vertical-align: middle;
             margin-right: 8px;
         }
+
+        /* Ranges Table */
+        .ranges-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+
+        .ranges-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            font-size: 0.85rem;
+            min-width: 800px;
+        }
+
+        .ranges-table th {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .ranges-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .ranges-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .ranges-table tr:hover {
+            background: #F9FAFB;
+        }
+
+        .ranges-table .param-name {
+            font-weight: 700;
+            color: var(--text-main);
+            background: #F9FAFB;
+            width: 140px;
+        }
+
+        .range-value {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .ranges-table .header-helado {
+            background: #FFF5F7;
+            text-align: center;
+        }
+
+        .ranges-table .header-sorbete {
+            background: #F0FDFA;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -238,12 +301,11 @@
             <a href="#" class="sidebar-brand">Ice Cream Mix</a>
             <ul class="nav-list">
                 <li class="nav-item"><a href="#intro" class="nav-link active">Introducción</a></li>
-                <li class="nav-item"><a href="#parametros" class="nav-link">Parámetros Clave</a></li>
-                <li class="nav-item"><a href="#calculadora" class="nav-link">Calculadora y Formulación</a></li>
+                <li class="nav-item"><a href="#calculadora" class="nav-link">Panel de Indicadores</a></li>
                 <li class="nav-item"><a href="#maestro" class="nav-link">Maestro Heladero</a></li>
                 <li class="nav-item"><a href="#ingredientes" class="nav-link">Mis Ingredientes</a></li>
                 <li class="nav-item"><a href="#recetario" class="nav-link">Tu Recetario</a></li>
-                <li class="nav-item"><a href="#produccion" class="nav-link">Control Overrun</a></li>
+                <li class="nav-item"><a href="#produccion" class="nav-link">Control de Producción</a></li>
                 <li class="nav-item"><a href="#escalado" class="nav-link">Multiplicar Fórmula</a></li>
             </ul>
         </nav>
@@ -253,161 +315,442 @@
 
             <section id="intro">
                 <h1>Manual de Usuario</h1>
-                <p class="lead">Domina la ciencia del helado artesanal con precisión y tecnología.</p>
+                <p class="lead">Domina la ciencia del helado artesanal con precisión, tecnología y un flujo de trabajo
+                    profesional.</p>
 
                 <div class="section-card">
-                    <p><strong>Ice Cream Mix</strong> no es solo un recetario; es una herramienta de formulación
-                        profesional que equilibra tus recetas en tiempo real. Este manual te explicará cómo interpretar
-                        los datos técnicos para conseguir la textura perfecta.</p>
+                    <h2>Tu Centro de Control</h2>
+                    <p><strong>Ice Cream Mix</strong> ha sido diseñado para que la formulación sea inmediata. La
+                        interfaz se divide en un acceso rápido a las funciones más potentes mediante el menú inferior y
+                        los accesos directos de la pantalla de inicio.</p>
 
                     <div class="screenshot-container">
-                        <img src="assets/home_screen.png" alt="Pantalla de Inicio" class="app-screenshot">
-                        <p class="screenshot-caption">Pantalla Principal: Tu centro de control</p>
+                        <img src="assets/main_screen_new.png" alt="Pantalla de Inicio" class="app-screenshot">
+                        <p class="screenshot-caption">Pantalla Principal: Acceso directo a la creación y gestión.</p>
                     </div>
 
-                    <div class="params-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                        <div class="param-card">
-                            <div class="param-title">1. Crear Manualmente</div>
-                            <p>Diseña tu receta desde cero. Tú tienes el control total de cada gramo de ingrediente.</p>
+                    <h3>Navegación Eficiente</h3>
+                    <p>El menú inferior te permite saltar entre las áreas clave de tu obrador digital en un solo toque:
+                    </p>
+                    <ul style="margin-bottom: 2rem;">
+                        <li><span class="mdi mdi-home-outline" style="color:var(--primary)"></span>
+                            Inicio:</strong> Resumen de tu actividad, tips y acceso a ingredientes.</li>
+                        <li><span class="mdi mdi-pencil-plus" style="color:var(--primary)"></span>
+                            Crear:</strong> El laboratorio central donde diseñas tus fórmulas gramo a gramo.</li>
+                        <li><span class="mdi mdi-chef-hat" style="color:var(--primary)"></span>
+                            Maestro:</strong> El asistente para generar recetas desde cero.</li>
+                        <li><span class="mdi mdi-book-open-variant" style="color:var(--primary)"></span>
+                            Recetario:</strong> Tu biblioteca personal de fórmulas guardadas.</li>
+                        <li><span class="mdi mdi-cog" style="color:var(--primary)"></span> Ajustes:</strong>
+                            Configura tu perfil, preferencias y suscripción.</li>
+                    </ul>
+
+                    <div class="params-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                        <div class="param-card" style="padding: 1rem;">
+                            <img src="assets/main_button_manual.png"
+                                style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;" alt="Crear Manualmente">
+                            <p style="font-size: 0.9rem;">Diseña tu receta desde cero con control total sobre cada
+                                componente y parámetro técnico.</p>
                         </div>
-                        <div class="param-card">
-                            <div class="param-title">2. Maestro Heladero</div>
-                            <p>El asistente inteligente que crea recetas equilibradas por ti partiendo de un sabor.</p>
+                        <div class="param-card" style="padding: 1rem;">
+                            <img src="assets/main_button_maestro.png"
+                                style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;" alt="Maestro Heladero">
+                            <p style="font-size: 0.9rem;">Genera fórmulas equilibradas automáticamente partiendo de un
+                                sabor y un tipo de base.</p>
                         </div>
-                        <div class="param-card">
-                            <div class="param-title">3. Inicio Rápido</div>
-                            <p>Acceso directo a bases pre-formuladas (Blanca, Chocolate, Vegana) listas para usar.</p>
+                        <div class="param-card" style="padding: 1rem;">
+                            <img src="assets/main_button_ingredients.png"
+                                style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;"
+                                alt="Gestión de Ingredientes">
+                            <p style="font-size: 0.9rem;">Accede directamente a tu base de datos para añadir, escanear o
+                                editar tus materias primas.</p>
                         </div>
-                        <div class="param-card">
-                            <div class="param-title">4. Tip del Maestro</div>
-                            <p>Consejos diarios de nivel experto para mejorar tu técnica y conocimientos sobre
-                                heladería.</p>
+                        <div class="param-card" style="padding: 1rem;">
+                            <img src="assets/main_quick_start.png"
+                                style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;" alt="Inicio Rápido">
+                            <p style="font-size: 0.9rem;">Acceso directo a tus Bases Maestras para retomar el trabajo
+                                donde lo dejaste.</p>
+                        </div>
+                        <div class="param-card" style="padding: 1rem;">
+                            <img src="assets/main_recents.png"
+                                style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;" alt="Recetas Recientes">
+                            <p style="font-size: 0.9rem;">Tus últimas creaciones siempre a mano con indicadores de
+                                estado actualizados.</p>
                         </div>
                     </div>
-                </div>
-            </section>
 
-            <section id="parametros">
-                <h2>1. Parámetros Técnicos de Equilibrio</h2>
-                <p>El corazón de la app. Entender estas siglas es clave para controlar el resultado final.</p>
-
-                <div class="params-grid">
-                    <!-- POD -->
-                    <div class="param-card">
-                        <div class="param-title">
-                            POD (Poder Edulcorante)
-                            <span class="param-range">10-25%</span>
+                    <div class="callout callout-pro" style="margin-top: 2rem;">
+                        <div style="text-align: center; margin-bottom: 1rem;">
+                            <img src="assets/main_tip_card.png"
+                                style="width: 100%; max-width: 500px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"
+                                alt="Tip del Maestro">
                         </div>
-                        <p>Mide la sensación de dulzor. La referencia es la Sacarosa (POD=100).</p>
-                        <ul>
-                            <li><strong>Bajo:</strong> Helado soso.</li>
-                            <li><strong>Alto:</strong> Empalagoso, tapa otros sabores.</li>
-                        </ul>
-                    </div>
-
-                    <!-- PAC -->
-                    <div class="param-card">
-                        <div class="param-title">
-                            PAC (Poder Anticongelante)
-                            <span class="param-range">200-400 pts</span>
-                        </div>
-                        <p>Controla la dureza a temperatura de servicio (-11° a -18°C).</p>
-                        <ul>
-                            <li><strong>Bajo:</strong> Helado duro, cristalizado.</li>
-                            <li><strong>Alto:</strong> Helado blando, se derrite rápido.</li>
-                        </ul>
-                    </div>
-
-                    <!-- MG -->
-                    <div class="param-card">
-                        <div class="param-title">
-                            MG (Materia Grasa)
-                            <span class="param-range">0-12%</span>
-                        </div>
-                        <p>Aporta cremosidad, cuerpo y sensación térmica cálida.</p>
-                        <ul>
-                            <li><strong>Helado Crema:</strong> 6-10% (láctea).</li>
-                            <li><strong>Sorbete:</strong> 0% (sin grasa).</li>
-                        </ul>
-                    </div>
-
-                    <!-- LPD -->
-                    <div class="param-card">
-                        <div class="param-title">
-                            LPD (Sólidos Lácteos)
-                            <span class="param-range">6-10%</span>
-                        </div>
-                        <p>Las proteínas y la lactosa que dan estructura y aireación (overrun) al helado.</p>
+                        <span class="mdi mdi-lightbulb-on" style="color:#FFB74D;"></span> <strong>Tip del
+                            Maestro:</strong> En la pantalla de inicio encontrarás consejos dinámicos que cambian
+                        periódicamente. Estos tips cubren desde el equilibrio de sólidos hasta técnicas de maduración
+                        para que sigas aprendiendo mientras formulas.
                     </div>
                 </div>
             </section>
 
             <section id="calculadora">
-                <h2>2. Crear una Fórmula Manual</h2>
+                <h2>1. Panel de Indicadores <span class="mdi mdi-pencil-plus" style="color:var(--primary)"></span></h2>
                 <div class="section-card">
-                    <h3>El Gráfico de Equilibrio</h3>
+                    <p>El laboratorio central de la app. Aquí es donde diseñas tus recetas con control total sobre cada
+                        gramo y monitoreas el equilibrio técnico al instante.</p>
+
                     <div class="screenshot-container">
-                        <img src="assets/balance_chart.png" alt="Gráfico de Equilibrio" class="app-screenshot">
-                        <p class="screenshot-caption">El radar te muestra si tu receta está perfecta (verde) o necesita
-                            ajustes.</p>
+                        <img src="assets/create_formula_full.png" alt="Pantalla de Nueva Fórmula"
+                            class="app-screenshot">
+                        <p class="screenshot-caption">Interfaz de Creación: Panel superior de control y área de
+                            composición.</p>
                     </div>
 
-                    <p>Al visualizar una receta, verás el gráfico de radar:</p>
+                    <h3>El Panel de Indicadores</h3>
+                    <p>En la parte superior verás 8 indicadores que se actualizan en <strong>tiempo real</strong>.
+                        Entender estas siglas es clave para controlar el resultado final de tu helado. Puedes consultar
+                        la <strong>Guía de Rangos Recomendados</strong> más abajo para orientarte sobre los valores
+                        óptimos según el tipo de receta:</p>
+
+                    <div class="params-grid">
+                        <div class="param-card">
+                            <div class="param-title">
+                                <img src="assets/indicator_pod.png" style="height: 60px; margin-bottom: 0.5rem;"
+                                    alt="POD Indicator">
+                                <br>POD (Sensación de Dulzor)
+                            </div>
+                            <p>Mide cuánto endulza la mezcla. Es clave para el sabor y la palatabilidad.</p>
+                            <ul>
+                                <li><strong>Bajo:</strong> Helado soso.</li>
+                                <li><strong>Alto:</strong> Empalagoso.</li>
+                            </ul>
+                        </div>
+
+                        <div class="param-card">
+                            <div class="param-title">
+                                <img src="assets/indicator_pac.png" style="height: 60px; margin-bottom: 0.5rem;"
+                                    alt="PAC Indicator">
+                                <br>PAC (Poder Anticongelante)
+                            </div>
+                            <p>Controla la dureza a la temperatura de servicio. Define la estructura del helado.</p>
+                            <ul>
+                                <li><strong>Bajo:</strong> Helado duro.</li>
+                                <li><strong>Alto:</strong> Helado blando.</li>
+                            </ul>
+                        </div>
+
+                        <div class="param-card">
+                            <div class="param-title">
+                                <img src="assets/indicator_mg.png" style="height: 60px; margin-bottom: 0.5rem;"
+                                    alt="MG Indicator">
+                                <br>MG (Materia Grasa)
+                            </div>
+                            <p>Aporta cremosidad, cuerpo y transmite los sabores de forma equilibrada.</p>
+                        </div>
+
+                        <div class="param-card">
+                            <div class="param-title">
+                                <img src="assets/indicator_st.png" style="height: 60px; margin-bottom: 0.5rem;"
+                                    alt="ST Indicator">
+                                <br>ST (Sólidos Totales)
+                            </div>
+                            <p>La suma de todos los componentes secos. Evita cristales de hielo molestos.</p>
+                        </div>
+
+                        <div class="param-card">
+                            <div class="param-title">
+                                <img src="assets/indicator_lpd.png" style="height: 60px; margin-bottom: 0.5rem;"
+                                    alt="LPD Indicator">
+                                <br>LPD (Sólidos Lácteos)
+                            </div>
+                            <p>Proteínas y lactosa que dan estructura y ayudan a atrapar el aire (overrun).</p>
+                        </div>
+
+                        <div class="param-card">
+                            <div class="param-title">
+                                <img src="assets/indicator_agua.png" style="height: 60px; margin-bottom: 0.5rem;"
+                                    alt="Agua Indicator">
+                                <br>AGUA (Contenido H2O)
+                            </div>
+                            <p>Controla la cantidad de líquido libre. Un exceso crea texturas acuosas.</p>
+                        </div>
+
+                        <div class="param-card">
+                            <img src="assets/indicator_peso.png" style="height: 40px;" alt="Peso">
+                            <p style="font-size: 0.8rem; margin-top: 5px;"><strong>Peso Total:</strong> La suma de todos
+                                los gramos de tu receta.</p>
+                        </div>
+                        <div class="param-card"
+                            style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                            <img src="assets/indicator_tp.png" style="height: 60px; margin-bottom: 0.5rem;"
+                                alt="TP Indicator">
+                            <p style="font-size: 0.8rem; margin-top: 5px;"><strong>Temp. Servicio (TP):</strong> La
+                                temperatura ideal estimada para servir este helado.</p>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 3rem;">Guía de Rangos Recomendados</h3>
+                    <p>Para que un helado sea perfecto, sus parámetros deben estar dentro de unos rangos específicos. El
+                        asistente del Maestro Heladero utiliza estos valores para avisarte de cualquier desequilibrio:
+                    </p>
+
+                    <div class="ranges-container">
+                        <table class="ranges-table">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2" class="param-name">Parámetro</th>
+                                    <th colspan="3" class="header-helado" style="color: #BE185D;">RECETAS BASE LÁCTEA
+                                        (HELADO)</th>
+                                    <th colspan="3" class="header-sorbete" style="color: #0D9488;">RECETAS BASE AGUA
+                                        (SORBETE)</th>
+                                </tr>
+                                <tr>
+                                    <th style="background: #FFF5F7; font-size: 0.75rem;">PREMIUM</th>
+                                    <th style="background: #FFF5F7; font-size: 0.75rem;">MEDIUM</th>
+                                    <th style="background: #FFF5F7; font-size: 0.75rem;">BASIC</th>
+                                    <th style="background: #F0FDFA; font-size: 0.75rem;">PREMIUM</th>
+                                    <th style="background: #F0FDFA; font-size: 0.75rem;">MEDIUM</th>
+                                    <th style="background: #F0FDFA; font-size: 0.75rem;">BASIC</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="param-name">MG (Grasa)</td>
+                                    <td class="range-value">12 - 16%</td>
+                                    <td class="range-value">8 - 12%</td>
+                                    <td class="range-value">4 - 8%</td>
+                                    <td class="range-value">0%</td>
+                                    <td class="range-value">0%</td>
+                                    <td class="range-value">0%</td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">LPD (Lácteos)</td>
+                                    <td class="range-value">10 - 12%</td>
+                                    <td class="range-value">8 - 10%</td>
+                                    <td class="range-value">6 - 8%</td>
+                                    <td class="range-value">0%</td>
+                                    <td class="range-value">0%</td>
+                                    <td class="range-value">0%</td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">POD (Dulzor)</td>
+                                    <td class="range-value">17 - 20%</td>
+                                    <td class="range-value">16 - 18%</td>
+                                    <td class="range-value">14 - 16%</td>
+                                    <td class="range-value">25 - 28%</td>
+                                    <td class="range-value">22 - 25%</td>
+                                    <td class="range-value">20 - 22%</td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">PAC (Anticong.)</td>
+                                    <td class="range-value">240 - 260</td>
+                                    <td class="range-value">230 - 250</td>
+                                    <td class="range-value">220 - 240</td>
+                                    <td class="range-value">300 - 320</td>
+                                    <td class="range-value">280 - 300</td>
+                                    <td class="range-value">270 - 290</td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">ST (Sólidos)</td>
+                                    <td class="range-value">38 - 42%</td>
+                                    <td class="range-value">35 - 38%</td>
+                                    <td class="range-value">32 - 35%</td>
+                                    <td class="range-value">30 - 32%</td>
+                                    <td class="range-value">28 - 30%</td>
+                                    <td class="range-value">26 - 28%</td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">Agua (H2O)</td>
+                                    <td class="range-value">58 - 62%</td>
+                                    <td class="range-value">60 - 63%</td>
+                                    <td class="range-value">63 - 66%</td>
+                                    <td class="range-value">68 - 72%</td>
+                                    <td class="range-value">70 - 73%</td>
+                                    <td class="range-value">72 - 75%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Composición de la Receta</h3>
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <img src="assets/recipe_composition.png"
+                            style="width: 100%; max-width: 400px; border-radius: 8px; border: 1px solid var(--border);"
+                            alt="Composición de Receta">
+                    </div>
+                    <p>Define los cimientos de tu creación:</p>
                     <ul>
-                        <li><span style="color:#10B981; font-weight:bold;">Zona Verde:</span> ¡Perfecto! Estás dentro de
-                            los parámetros ideales.</li>
-                        <li><span style="color:#EF4444; font-weight:bold;">Zona Roja:</span> La receta está
-                            desequilibrada (ej: demasiado dura o blanda).</li>
+                        <li><strong>Título:</strong> Ponle un nombre único a tu receta.</li>
+                        <li><strong>Base:</strong> Elige entre <strong>Helado</strong> (lácteo) o
+                            <strong>Sorbete</strong> (agua). Los parámetros ideales cambiarán según esta elección.
+                        </li>
+                        <li><strong>Calidad:</strong> Define el nivel (Premium, Medium, Basic) para ajustar los rangos
+                            de equilibrio aconsejadores.</li>
+                        <li><strong>Bases Maestras:</strong> Pulsa este botón (<img src="assets/button_bases.png"
+                                style="height: 30px; vertical-align: middle;" alt="Bases Maestras">) para cargar una
+                            estructura equilibrada y empezar a modificarla.</li>
                     </ul>
 
-                    <h3>Edición en Tiempo Real</h3>
-                    <div class="screenshot-container">
-                        <img src="assets/edit_formula.png" alt="Pantalla de Edición" class="app-screenshot">
-                        <p class="screenshot-caption">Ajusta gramos y ve cómo cambian los valores al instante.</p>
+                    <h3>Gestión de Ingredientes</h3>
+                    <p>Añade y ajusta tus materias primas con precisión profesional:</p>
+                    <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+                        <div
+                            style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: #F9FAFB; border-radius: 8px;">
+                            <img src="assets/icon_eye.png" style="width: 32px;" alt="Vista Rápida">
+                            <div>
+                                <strong>Vista Rápida:</strong> Toca el icono del ojo para ver los parámetros
+                                nutricionales (POD, PAC, etc.) de un ingrediente específico sin salir del editor.
+                                <br><img src="assets/ingredient_quick_view.png"
+                                    style="width: 100%; max-width: 300px; margin-top: 10px; border-radius: 4px; border: 1px solid var(--border);"
+                                    alt="Quick View Modal">
+                            </div>
+                        </div>
+                        <div
+                            style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #FEF2F2; border-radius: 8px;">
+                            <img src="assets/icon_trash.png" style="width: 32px;" alt="Eliminar">
+                            <div>
+                                <strong>Eliminar:</strong> Usa la papelera roja para quitar ingredientes de la
+                                composición al instante.
+                            </div>
+                        </div>
                     </div>
 
-                    <p>En la pantalla de edición puedes:</p>
-                    <ol>
-                        <li>Ver los semáforos de calidad y <strong>guiarte por los parámetros aconsejados</strong> de
-                            POD, PAC, MG, ST, LPD y Agua.</li>
-                        <li>Añadir ingredientes pulsando el botón "+".</li>
-                        <li>Leer las <strong>Sugerencias del Maestro</strong> en la parte inferior si algo falla (ej:
-                            "El PAC es alto, reduce dextrosa").</li>
-                    </ol>
+                    <h3>Barra de Acciones</h3>
+                    <div style="text-align: center; margin-bottom: 1rem;">
+                        <img src="assets/action_bar.png"
+                            style="width: 100%; max-width: 250px; border-radius: 8px; border: 1px solid var(--border);"
+                            alt="Action Bar">
+                    </div>
+                    <p>Bajo los selectores principales tienes accesos rápidos para:</p>
+                    <ul>
+                        <li><strong>Modo Lista:</strong> Alterna entre la vista de edición y de solo lectura.</li>
+                        <li><strong>Gráfico de Balance:</strong> Abre el radar de equilibrio para ver visualmente si tu
+                            receta está en la "zona verde".</li>
+                        <li><strong>Deshacer/Rehacer:</strong> ¿Te has equivocado con un gramaje? Vuelve atrás
+                            fácilmente.</li>
+                    </ul>
 
-                    <div class="callout callout-pro">
-                        <strong>Tip Profesional:</strong> Haz caso a la Temperatura de Servicio (TP). Si quieres servir
-                        a -14°C, ajusta el PAC para que la app te dé luz verde en esa temperatura.
+                    <h3>Sugerencias del Maestro</h3>
+                    <p>Cuando la app detecta un desequilibrio técnico (valores en rojo), el Maestro te ofrecerá
+                        soluciones automáticas:</p>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1rem;">
+                        <div
+                            style="display: flex; align-items: start; gap: 1.5rem; padding: 1rem; background: #FFF5F7; border-radius: 8px; border: 1px solid #FFE4E8;">
+                            <img src="assets/icon_suggestions.png" style="width: 40px; border-radius: 4px;"
+                                alt="Icono Sugerencias">
+                            <div>
+                                <strong>Aviso Flotante:</strong> Verás este icono con un número indicando cuántas
+                                sugerencias ha detectado el Maestro. Toca sobre él para abrir las sugerencias.
+                            </div>
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="assets/maestro_suggestions_manual.png"
+                                style="width: 100%; max-width: 350px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"
+                                alt="Panel Sugerencias">
+                            <p class="screenshot-caption">Panel de sugerencias con soluciones para corregir el exceso de
+                                POD y PAC.</p>
+                        </div>
+                    </div>
+
+                    <div class="callout callout-pro" style="margin-top: 2rem;">
+                        <strong>Sugerencias:</strong> El Maestro no solo te dice qué está mal, sino qué
+                        ingrediente concreto (como la Dextrosa o la Sacarosa) debes reducir o sustituir por otro (como
+                        la Maltodextrina) para volver a la zona de equilibrio.
                     </div>
                 </div>
             </section>
 
             <section id="maestro">
-                <h2>3. El Maestro Heladero <span class="mdi mdi-chef-hat" style="color:var(--primary)"></span></h2>
+                <h2>2. El Maestro Heladero <span class="mdi mdi-chef-hat" style="color:var(--primary)"></span></h2>
                 <p>Nuestro sistema avanzado genera recetas equilibradas automáticamente.</p>
 
                 <div class="section-card">
                     <div class="screenshot-container">
-                        <img src="assets/maestro_setup.png" alt="Configuración Maestro" class="app-screenshot">
+                        <img src="assets/maestro_setup_new.png" alt="Configuración Maestro" class="app-screenshot">
                         <p class="screenshot-caption">Elige sabor, base y calidad. El Maestro Heladero hace el resto.
                         </p>
                     </div>
 
+                    <h3>Modos de Formulación</h3>
+                    <div class="params-grid" style="margin-bottom: 2rem;">
+                        <div class="param-card">
+                            <img src="assets/maestro_mode_standard.png"
+                                style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;"
+                                alt="Formulación Estándar">
+                            <p><strong>Estándar:</strong> Algoritmo optimizado para recetas clásicas, asegurando un
+                                equilibrio perfecto con ingredientes tradicionales.</p>
+                        </div>
+                        <div class="param-card">
+                            <img src="assets/maestro_mode_pro.png"
+                                style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;"
+                                alt="Formulación Profesional">
+                            <p><strong>Profesional (PRO):</strong> Precisión avanzada para texturas de alta gama, con
+                                control exhaustivo de todos los parámetros técnicos.</p>
+                        </div>
+                    </div>
+
+                    <h3>Configuración de la Fórmula</h3>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2rem;">
+                        <div
+                            style="display: flex; align-items: center; gap: 1.5rem; padding: 1rem; background: #F9FAFB; border-radius: 8px;">
+                            <img src="assets/maestro_configuration.png"
+                                style="width: 100%; max-width: 300px; border-radius: 8px;"
+                                alt="Configuración de Parámetros">
+                            <div>
+                                <p><strong>Sabor y Base:</strong> Define el alma de tu helado. Indica el sabor y
+                                    selecciona si es una base láctea o un sorbete base agua.</p>
+                                <p><strong>Calidad:</strong> Ajusta los rangos de sólidos y grasas seleccionando entre
+                                    calidad Básica, Media o Premium.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Temperatura de Servicio</h3>
+                    <p>Una función exclusiva de la <strong>Formulación Profesional</strong>. Indica al Maestro a qué
+                        temperatura vas a servir tu helado y él recalculará el PAC (Poder Anticongelante) necesario para
+                        que la textura sea perfecta en ese punto exacto.</p>
+                    <div class="params-grid" style="margin-bottom: 2rem;">
+                        <div class="param-card">
+                            <img src="assets/maestro_temp_soft.png"
+                                style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;" alt="Temp Suave">
+                            <p><strong>Suave (Vitrina):</strong> Mayor PAC para mantener el helado servible a
+                                temperaturas más altas (-11°C).</p>
+                        </div>
+                        <div class="param-card">
+                            <img src="assets/maestro_temp_standard.png"
+                                style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;" alt="Temp Estándar">
+                            <p><strong>Estándar:</strong> El punto de equilibrio ideal para la mayoría de vitrinas
+                                profesionales (-14°C).</p>
+                        </div>
+                        <div class="param-card">
+                            <img src="assets/maestro_temp_hard.png"
+                                style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;" alt="Temp Duro">
+                            <p><strong>Duro (Congelador):</strong> Menor PAC para evitar que el helado se vuelva piedra
+                                en congeladores domésticos (-18°C).</p>
+                        </div>
+                    </div>
+
+                    <h3>Generación Inteligente</h3>
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <img src="assets/maestro_generate_button.png"
+                            style="width: 100%; max-width: 400px; border-radius: 20px;" alt="Botón Generar">
+                        <p style="margin-top: 1rem;">Una vez configurado, el botón <strong>Generar Fórmula</strong>
+                            activará el sistema para entregarte una receta pesada y equilibrada lista para usar.</p>
+                    </div>
+
                     <h3>Cómo funciona</h3>
                     <ol>
-                        <li>Selecciona <strong>Formulación Estándar</strong> (recetas clásicas) o
-                            <strong>Profesional</strong> (textura premium).
-                        </li>
-                        <li>Escribe el sabor (ej: "Pistacho", "Fresa").</li>
-                        <li>Elige si quieres base de Agua (Sorbete) o Láctea (Helado).</li>
-                        <li>Pulsa "Generar Fórmula" y en segundos tendrás la receta equilibrada.</li>
+                        <li>Escribe el sabor deseado (ej: "Chocolate Belga", "Mango y Maracuyá").</li>
+                        <li>Elige la <strong>Base</strong> (Agua para sorbetes o Láctea para helados).</li>
+                        <li>Selecciona la <strong>Calidad</strong> (Económica, Estándar o Premium).</li>
+                        <li>Pulsa "Generar Fórmula" y deja que el Maestro equilibre los parámetros por ti.</li>
                     </ol>
                 </div>
             </section>
 
             <section id="ingredientes">
-                <h2>4. Mis Ingredientes (Base de Datos) <span class="mdi mdi-database"
-                        style="color:var(--primary)"></span></h2>
+                <h2>3. Mis Ingredientes (Base de Datos) <i data-feather="database" style="color:var(--primary)"></i>
+                </h2>
 
                 <div class="section-card">
                     <h3>Gestión de Ingredientes</h3>
@@ -416,8 +759,14 @@
 
                     <div class="screenshot-container">
                         <img src="assets/ingredients_list.png" alt="Lista de Ingredientes" class="app-screenshot">
-                        <p class="screenshot-caption">Filtra entre ingredientes del sistema y tus propias creaciones.
-                        </p>
+                        <p class="screenshot-caption">Base de datos de ingredientes.</p>
+                    </div>
+
+                    <div style="text-align: center; margin: 1.5rem 0;">
+                        <img src="assets/ingredients_filter.png" alt="Filtros de Ingredientes"
+                            style="width: 100%; max-width: 450px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #666;">Filtra rápidamente entre los
+                            ingredientes del sistema y tus creaciones personales.</p>
                     </div>
 
                     <ul>
@@ -436,8 +785,13 @@
 
                     <h3 style="margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">Añadir Nuevo
                         Ingrediente</h3>
-                    <p>Personaliza tu base de datos con tus propios productos. Tienes 4 formas de añadir un nuevo
-                        ingrediente:</p>
+                    <p>Personaliza tu base de datos con tus propios productos. Pulsa el botón <strong>"Crear
+                            Nuevo"</strong> para comenzar:</p>
+
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <img src="assets/ingredients_add_button.png" alt="Botón Crear Nuevo"
+                            style="width: 100%; max-width: 400px; border-radius: 20px;">
+                    </div>
 
                     <div class="screenshot-container">
                         <img src="assets/new_ingredient_methods.png" alt="Métodos de creación de ingredientes"
@@ -445,12 +799,13 @@
                         <p class="screenshot-caption">Elige el método que mejor se adapte a ti.</p>
                     </div>
 
-                    <div class="params-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+                    <div class="params-grid"
+                        style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-bottom: 2rem;">
                         <div class="param-card">
                             <div class="param-title">
                                 <span><i data-feather="edit-2"></i> Manual</span>
                             </div>
-                            <p style="font-size: 0.9rem">Introduce los valores POD, PAC y demás valores a mano.</p>
+                            <p style="font-size: 0.9rem">Introduce los valores POD, PAC y demás parámetros a mano.</p>
                         </div>
 
                         <div class="param-card">
@@ -465,166 +820,271 @@
                             <div class="param-title">
                                 <span><i data-feather="image"></i> Importar</span>
                             </div>
-                            <p style="font-size: 0.9rem">Sube una foto de la ficha técnica desde tu galería.</p>
+                            <p style="font-size: 0.9rem">Sube una foto de la tabla nutricional desde tu galería.</p>
                         </div>
 
                         <div class="param-card">
                             <div class="param-title">
-                                <span><i data-feather="sliders"></i> Conversor de tabla nutricional</span>
+                                <span><i data-feather="sliders"></i> Conversor</span>
                             </div>
-                            <p style="font-size: 0.9rem">Calcula POD/PAC aproximados de azúcares, sólidos y grasas desde
-                                tablas nutricionales.</p>
+                            <p style="font-size: 0.9rem">Calcula valores desde una tabla nutricional estándar.</p>
+                        </div>
+                    </div>
+
+                    <div
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                        <div>
+                            <h4>Creación Manual</h4>
+                            <p>Ideal si ya tienes la ficha técnica del producto. Completa los campos de POD, PAC,
+                                Materia Grasa, Sólidos y Lactosa.</p>
+                            <img src="assets/ingredients_custom_updated.png" alt="Formulario Manual"
+                                style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-top: 1rem;">
+                        </div>
+                        <div>
+                            <h4>Conversor de Tabla Nutricional</h4>
+                            <p>Si solo tienes la etiqueta del supermercado, introduce los valores por cada 100g y el
+                                sistema estimará los parámetros técnicos.</p>
+                            <img src="assets/ingredients_converter_updated.png" alt="Conversor Nutricional"
+                                style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-top: 1rem;">
                         </div>
                     </div>
                 </div>
 
-                <h3 id="recetario">Tu Recetario</h3>
-                <div class="section-card">
-                    <div class="screenshot-container">
-                        <img src="assets/recipe_book.png" alt="Recetario" class="app-screenshot">
-                        <p class="screenshot-caption">Tus fórmulas organizadas y siempre a mano.</p>
-                    </div>
-                    <p>Guarda tus creaciones favoritas, duplícalas para hacer variaciones o compártelas como PDF.</p>
-
-                    <h4 style="margin-top: 1.5rem;">Acciones Rápidas</h4>
-                    <p>Cada receta en tu recetario tiene botones de acción rápida:</p>
-                    <ul>
-                        <li><span class="mdi mdi-bell" style="color:#FFB74D;"></span> <strong>Alarma de
-                                Maduración:</strong> Programa un recordatorio para cuando tu mezcla esté lista.</li>
-                        <li><span class="mdi mdi-star" style="color:#FFB74D;"></span> <strong>Favoritos:</strong> Marca
-                            tus recetas más usadas para encontrarlas rápido.</li>
-                        <li><span class="mdi mdi-content-copy" style="color:#6B7280;"></span> <strong>Duplicar:</strong>
-                            Crea una copia para experimentar sin perder la original.</li>
-                        <li><span class="mdi mdi-delete" style="color:#EF4444;"></span> <strong>Eliminar:</strong> Borra
-                            las recetas que ya no necesites.</li>
-                    </ul>
-
-                    <h4 style="margin-top: 1.5rem; border-top: 1px solid var(--border); padding-top: 1rem;">
-                        <span class="mdi mdi-bell-ring" style="color:#FFB74D;"></span> Alarma de Maduración
-                    </h4>
-                    <p>La maduración es el tiempo de reposo en frío (2-4°C) que necesita tu mezcla para hidratar
-                        proteínas y estabilizantes. Desde el Recetario puedes programar alarmas para no olvidarte de
-                        mantecar.</p>
-
-                    <div class="screenshot-container">
-                        <img src="assets/maturation_alarm.png" alt="Alarma de Maduración" class="app-screenshot">
-                        <p class="screenshot-caption">Configura alarmas con tiempos predeterminados o personalizados.
+                <section id="recetario">
+                    <h2>4. Tu Recetario <img src="assets/recipe_book_icon.png" alt="Icono Recetario"
+                            style="height: 28px; width: auto; vertical-align: middle; margin-left: 8px;"></h2>
+                    <div class="section-card">
+                        <div class="screenshot-container">
+                            <img src="assets/recipe_book_new.png" alt="Recetario" class="app-screenshot">
+                            <p class="screenshot-caption">Gestión inteligente de recetas con estados de producción en
+                                tiempo
+                                real.</p>
+                        </div>
+                        <p>Guarda tus creaciones favoritas, duplícalas para hacer variaciones o compártelas como PDF.
                         </p>
-                    </div>
 
-                    <h5 style="margin-top: 1.5rem; margin-bottom: 0.75rem; font-size: 0.95rem;">Estados de la Alarma
-                    </h5>
-                    <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem;">
-                        <div
-                            style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #FFF8E1; border-radius: 8px; border-left: 4px solid #FFB74D;">
-                            <span class="mdi mdi-bell-ring" style="font-size: 24px; color: #FFB74D;"></span>
-                            <div>
-                                <strong style="color: #E65100;">Madurando</strong>
-                                <p style="margin: 0; font-size: 0.9rem; color: #5D4037;">La maduración está en proceso.
-                                    Verás el tiempo restante en la tarjeta.</p>
-                            </div>
+                        <div class="callout callout-pro">
+                            <strong>Selección en Lote:</strong> Activa el modo de selección (<span
+                                class="mdi mdi-checkbox-marked-outline"></span>) para borrar o marcar varios favoritos a
+                            la
+                            vez. ¡Usa el botón <strong>"Todo"</strong> para seleccionarlos todos instantáneamente!
                         </div>
-                        <div
-                            style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #E8F5E9; border-radius: 8px; border-left: 4px solid #4CAF50;">
-                            <span class="mdi mdi-bell-ring" style="font-size: 24px; color: #4CAF50;"></span>
-                            <div>
-                                <strong style="color: #1B5E20;">Madurado</strong>
-                                <p style="margin: 0; font-size: 0.9rem; color: #2E7D32;">¡La maduración se ha
-                                    completado! Tu mezcla está lista para mantecar.</p>
-                            </div>
-                        </div>
-                        <div
-                            style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #FFF3E0; border-radius: 8px; border-left: 4px solid #FFB74D;">
-                            <span class="mdi mdi-bell-plus-outline" style="font-size: 24px; color: #FFB74D;"></span>
-                            <div>
-                                <strong style="color: #E65100;">Sin alarma</strong>
-                                <p style="margin: 0; font-size: 0.9rem; color: #5D4037;">Esta receta no tiene alarma
-                                    asignada. Toca para programar una.</p>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="params-grid" style="grid-template-columns: 1fr 1fr; margin-top: 1rem;">
-                        <div class="param-card" style="border-left: 4px solid #4ECDC4;">
-                            <div class="param-title">
-                                <span><span class="mdi mdi-ice-cream" style="color:#4ECDC4;"></span> Helado</span>
+                        <h4 style="margin-top: 1.5rem;">Acciones Rápidas</h4>
+                        <p>Cada receta en tu recetario tiene botones de acción rápida:</p>
+                        <ul>
+                            <li><span class="mdi mdi-clipboard-check-outline" style="color:#4B5563;"></span>
+                                <strong>Control
+                                    de Producción:</strong> Inicia una sesión de Pasteurización, Enfriamiento,
+                                Maduración o
+                                Mantecado directamente
+                                desde la tarjeta.
+                            </li>
+                            <li><span class="mdi mdi-bell-plus-outline" style="color:#4B5563;"></span> <strong>Alarma de
+                                    Maduración:</strong> Programa un recordatorio para cuando tu mezcla esté lista.</li>
+                            <li><span class="mdi mdi-star-outline" style="color:#4B5563;"></span>
+                                <strong>Favoritos:</strong> Marca
+                                tus recetas más usadas para encontrarlas rápido.
+                            </li>
+                            <li><span class="mdi mdi-content-copy" style="color:#FF6B9D;"></span>
+                                <strong>Duplicar:</strong>
+                                Crea una copia para experimentar sin perder la original.
+                            </li>
+                            <li><span class="mdi mdi-trash-can-outline" style="color:#EF4444;"></span>
+                                <strong>Eliminar:</strong> Borra
+                                las recetas que ya no necesites.
+                            </li>
+                        </ul>
+
+                        <h5 style="margin-top: 1.5rem; margin-bottom: 0.75rem; font-size: 0.95rem;">Estados de la Alarma
+                        </h5>
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem;">
+                            <div
+                                style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #FFF8E1; border-radius: 8px; border-left: 4px solid #FFB74D;">
+                                <span class="mdi mdi-bell-ring" style="font-size: 24px; color: #FFB74D;"></span>
+                                <div>
+                                    <strong style="color: #E65100;">Madurando</strong>
+                                    <p style="margin: 0; font-size: 0.9rem; color: #5D4037;">La maduración está en
+                                        proceso.
+                                        Verás el tiempo restante en la tarjeta.</p>
+                                </div>
                             </div>
-                            <p style="margin-bottom: 0.5rem;"><strong>Mínimo:</strong> 4 horas</p>
-                            <p style="margin-bottom: 0.5rem;"><strong style="color:#4ECDC4;">Óptimo:</strong> 8-12 horas
+                            <div
+                                style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #E8F5E9; border-radius: 8px; border-left: 4px solid #4CAF50;">
+                                <span class="mdi mdi-bell-ring" style="font-size: 24px; color: #4CAF50;"></span>
+                                <div>
+                                    <strong style="color: #1B5E20;">Madurado</strong>
+                                    <p style="margin: 0; font-size: 0.9rem; color: #2E7D32;">¡La maduración se ha
+                                        completado! Tu mezcla está lista para mantecar.</p>
+                                </div>
+                            </div>
+                            <div
+                                style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #F5F5F5; border-radius: 8px; border-left: 4px solid #9E9E9E;">
+                                <span class="mdi mdi-bell-plus-outline" style="font-size: 24px; color: #4B5563;"></span>
+                                <div>
+                                    <strong style="color: #4B5563;">Sin alarma</strong>
+                                    <p style="margin: 0; font-size: 0.9rem; color: #616161;">Esta receta no tiene alarma
+                                        asignada. Toca para programar una.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 style="margin-top: 1.5rem; border-top: 1px solid var(--border); padding-top: 1rem;">
+                            <span class="mdi mdi-bell-ring" style="color:#FFB74D;"></span> Alarma de Maduración
+                        </h4>
+                        <p>La maduración es el tiempo de reposo en frío (2-4°C) que necesita tu mezcla para hidratar
+                            proteínas y estabilizantes. Desde el Recetario puedes programar alarmas para no olvidarte de
+                            mantecar.</p>
+
+                        <div class="screenshot-container">
+                            <img src="assets/maturation_alarm.png" alt="Alarma de Maduración" class="app-screenshot">
+                            <p class="screenshot-caption">Configura alarmas con tiempos predeterminados o
+                                personalizados.
                             </p>
-                            <p style="margin-bottom: 0;"><strong>Máximo:</strong> 72 horas</p>
                         </div>
-                        <div class="param-card" style="border-left: 4px solid #FF6B6B;">
-                            <div class="param-title">
-                                <span><span class="mdi mdi-fruit-pineapple" style="color:#FF6B6B;"></span>
-                                    Sorbete</span>
+
+
+
+                        <div class="params-grid" style="grid-template-columns: 1fr 1fr; margin-top: 1rem;">
+                            <div class="param-card" style="border-left: 4px solid #4ECDC4;">
+                                <div class="param-title">
+                                    <span><span class="mdi mdi-ice-cream" style="color:#4ECDC4;"></span> Helado</span>
+                                </div>
+                                <p style="margin-bottom: 0.5rem;"><strong>Mínimo:</strong> 4 horas</p>
+                                <p style="margin-bottom: 0.5rem;"><strong style="color:#4ECDC4;">Óptimo:</strong> 8-12
+                                    horas
+                                </p>
+                                <p style="margin-bottom: 0;"><strong>Máximo:</strong> 72 horas</p>
                             </div>
-                            <p style="margin-bottom: 0.5rem;"><strong>Mínimo:</strong> 2 horas</p>
-                            <p style="margin-bottom: 0.5rem;"><strong style="color:#FF6B6B;">Óptimo:</strong> 4-6 horas
-                            </p>
-                            <p style="margin-bottom: 0;"><strong>Máximo:</strong> 24-48 horas</p>
+                            <div class="param-card" style="border-left: 4px solid #FF6B6B;">
+                                <div class="param-title">
+                                    <span><span class="mdi mdi-fruit-pineapple" style="color:#FF6B6B;"></span>
+                                        Sorbete</span>
+                                </div>
+                                <p style="margin-bottom: 0.5rem;"><strong>Mínimo:</strong> 2 horas</p>
+                                <p style="margin-bottom: 0.5rem;"><strong style="color:#FF6B6B;">Óptimo:</strong> 4-6
+                                    horas
+                                </p>
+                                <p style="margin-bottom: 0;"><strong>Máximo:</strong> 24-48 horas</p>
+                            </div>
+                        </div>
+
+                        <div class="callout callout-pro" style="margin-top: 1rem;">
+                            <strong>Barra de Progreso:</strong> Mientras la alarma está activa, verás una barra de
+                            progreso
+                            y el estado de maduración directamente en la tarjeta de la receta (MADURANDO, PUNTO ÓPTIMO o
+                            MADURADO).
+                        </div>
+
+                    </div>
+                </section>
+
+                <section id="produccion">
+                    <h2>5. Control de Producción <span class="mdi mdi-clipboard-check-outline"
+                            style="color:var(--primary)"></span></h2>
+                    <div class="section-card">
+                        <h3>Procesos Personalizados</h3>
+                        <p>Optimiza tu flujo de trabajo configurando procesos para cada receta. Accede pulsando el icono
+                            de
+                            portapapeles (<span class="mdi mdi-clipboard-play-outline"></span>) en la tarjeta de
+                            cualquier
+                            receta.</p>
+
+                        <div class="screenshot-container">
+                            <img src="assets/production_control.png" alt="Control de Producción" class="app-screenshot">
+                            <p class="screenshot-caption">Configura los tiempos de Pasteurización, Enfriamiento,
+                                Maduración
+                                y Mantecado.</p>
+                        </div>
+
+                        <h3>Seguimiento en Tiempo Real</h3>
+                        <p>Una vez iniciado un proceso, aparecerá una <strong>barra de progreso</strong> directamente en
+                            la
+                            tarjeta de la receta para que puedas monitorear el estado sin entrar en el detalle.</p>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem;">
+                            <div style="text-align: center;">
+                                <img src="assets/progress_pasteurization.png"
+                                    style="width: 100%; border-radius: 8px; border: 1px solid var(--border);"
+                                    alt="Progreso Pasteurización">
+                                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">Fase de
+                                    Calor (Naranja)</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <img src="assets/progress_cooling.png"
+                                    style="width: 100%; border-radius: 8px; border: 1px solid var(--border);"
+                                    alt="Progreso Enfriamiento">
+                                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">Fase de
+                                    Frío
+                                    (Azul)</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <img src="assets/progress_maturation.png"
+                                    style="width: 100%; border-radius: 8px; border: 1px solid var(--border);"
+                                    alt="Progreso Maduración">
+                                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">Fase de
+                                    Reposo (Amarillo)</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <img src="assets/progress_mantecado.png"
+                                    style="width: 100%; border-radius: 8px; border: 1px solid var(--border);"
+                                    alt="Progreso Mantecado">
+                                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">Fase de
+                                    Turbinado (Verde)</p>
+                            </div>
+                        </div>
+
+                        <div class="callout callout-pro">
+                            <strong>Tip:</strong> Recibirás notificaciones cuando cada fase termine para que tu
+                            producción
+                            no se detenga.
+                        </div>
+
+                        <h3 style="margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">¿Qué es
+                            el
+                            Overrun?</h3>
+                        <p>Es la cantidad de aire que incorporas a tu helado durante el mantecado. El aire es clave para
+                            una
+                            textura suave.</p>
+
+                        <div class="screenshot-container">
+                            <img src="assets/overrun.png" alt="Calculadora de Overrun" class="app-screenshot">
+                            <p class="screenshot-caption">Mide el rendimiento real de tu mantecadora introduciendo el
+                                peso
+                                de la mezcla y del helado terminado.</p>
+                        </div>
+
+                        <div class="callout callout-warning">
+                            <strong>Objetivo:</strong> Un helado artesanal suele tener entre <strong>30-40%</strong> de
+                            Overrun.
                         </div>
                     </div>
+                </section>
 
-                    <div class="callout callout-pro" style="margin-top: 1rem;">
-                        <strong>Barra de Progreso:</strong> Mientras la alarma está activa, verás una barra de progreso
-                        y el estado de maduración directamente en la tarjeta de la receta (MADURANDO, PUNTO ÓPTIMO o
-                        MADURADO).
+                <section id="escalado">
+                    <h2>6. Multiplicar Fórmula <i data-feather="maximize-2" style="color:var(--primary)"></i></h2>
+                    <div class="section-card">
+                        <p>¿Tienes una receta perfecta para 1kg pero necesitas producir 50kg? No uses la calculadora a
+                            mano.
+                        </p>
+
+                        <div class="screenshot-container">
+                            <img src="assets/multiplier.png" alt="Multiplicar Fórmula" class="app-screenshot">
+                            <p class="screenshot-caption">Convierte tu receta a producción industrial en un click.</p>
+                        </div>
+
+                        <h3>Pasos:</h3>
+                        <ol>
+                            <li>Entra en tu fórmula guardada en el Recetario.</li>
+                            <li>Pulsa la opción <strong>"Multiplicar Fórmula"</strong>.</li>
+                            <li>Usa los <strong>botones rápidos (x2, x3, x4, x5)</strong> para multiplicar al instante.
+                            </li>
+                            <li>O introduce manualmente el <strong>Peso Total Objetivo</strong> (ej: 5000g).</li>
+                            <li>La app recalculará instantáneamente todos los ingredientes manteniendo el equilibrio
+                                perfecto.</li>
+                        </ol>
                     </div>
-                </div>
-            </section>
-
-            <section id="produccion">
-                <h2>5. Control de Producción (Overrun) <span class="mdi mdi-ice-cream"
-                        style="color:var(--primary)"></span></h2>
-                <div class="section-card">
-                    <h3>¿Qué es el Overrun?</h3>
-                    <p>Es la cantidad de aire que incorporas a tu helado durante la mantecación. El aire hace que el
-                        helado sea cálido y suave.</p>
-
-                    <div class="screenshot-container">
-                        <img src="assets/overrun.png" alt="Calculadora de Overrun" class="app-screenshot">
-                        <p class="screenshot-caption">Mide el rendimiento real de tu mantecadora.</p>
-                    </div>
-
-                    <h3>Cómo calcularlo con la App</h3>
-                    <ol>
-                        <li>Pesa un recipiente lleno de tu <strong>mezcla líquida</strong> (ej: 108g).</li>
-                        <li>Manteca el helado y llena <strong>EL MISMO recipiente</strong> con el helado ya hecho (a
-                            ras).</li>
-                        <li>Pesa el helado (ej: 80g).</li>
-                        <li>Introduce ambos valores en la calculadora de la app.</li>
-                    </ol>
-                    <div class="callout callout-pro">
-                        <strong>Objetivo:</strong> Un helado artesanal suele tener entre <strong>30-40%</strong> de
-                        Overrun. Menos es muy denso, más es demasiado aireado (tipo industrial).
-                    </div>
-                </div>
-            </section>
-
-            <section id="escalado">
-                <h2>6. Multiplicar Fórmula <i data-feather="maximize-2" style="color:var(--primary)"></i></h2>
-                <div class="section-card">
-                    <p>¿Tienes una receta perfecta para 1kg pero necesitas producir 50kg? No uses la calculadora a mano.
-                    </p>
-
-                    <div class="screenshot-container">
-                        <img src="assets/multiplier.png" alt="Multiplicar Fórmula" class="app-screenshot">
-                        <p class="screenshot-caption">Convierte tu receta de laboratorio a producción industrial en un
-                            click.</p>
-                    </div>
-
-                    <h3>Pasos:</h3>
-                    <ol>
-                        <li>Entra en tu fórmula guardada en el Recetario.</li>
-                        <li>Pulsa la opción <strong>"Multiplicar Fórmula"</strong>.</li>
-                        <li>Usa los <strong>botones rápidos (x2, x3, x4, x5)</strong> para multiplicar al instante.</li>
-                        <li>O introduce manualmente el <strong>Peso Total Objetivo</strong> (ej: 5000g).</li>
-                        <li>La app recalculará instantáneamente todos los ingredientes manteniendo el equilibrio
-                            perfecto.</li>
-                    </ol>
-                </div>
-            </section>
+                </section>
 
         </main>
     </div>
