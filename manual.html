@@ -211,17 +211,29 @@
         }
 
         @media (max-width: 767px) {
-            .info-row {
+            .info-row.stack-mobile {
                 flex-direction: column !important;
                 align-items: flex-start !important;
                 gap: 1rem !important;
-                padding: 1rem !important;
+                padding: 1.5rem 1rem !important;
             }
 
-            .info-row img {
+            .info-row.stack-mobile img {
                 width: 100% !important;
                 max-width: none !important;
                 margin-bottom: 0.5rem;
+            }
+
+            .info-row:not(.stack-mobile) {
+                gap: 1rem !important;
+                padding: 1rem !important;
+                align-items: start !important;
+            }
+
+            .info-row:not(.stack-mobile)>img {
+                width: auto !important;
+                max-width: 40px !important;
+                margin-bottom: 0;
             }
 
             .info-row>div {
@@ -532,9 +544,14 @@
             <a href="#" style="text-decoration: none; color: var(--primary); font-weight: 800; font-size: 1rem;">ICE
                 CREAM MIX</a>
         </div>
-        <button class="menu-toggle" id="menuToggle">
-            <i data-feather="menu"></i>
-        </button>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <button class="menu-toggle" id="searchToggle" title="Buscar">
+                <i data-feather="search"></i>
+            </button>
+            <button class="menu-toggle" id="menuToggle">
+                <i data-feather="menu"></i>
+            </button>
+        </div>
     </div>
 
     <div class="overlay" id="overlay"></div>
@@ -967,7 +984,7 @@
 
                     <h3>Configuración de la Fórmula</h3>
                     <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2rem;">
-                        <div class="info-row">
+                        <div class="info-row stack-mobile">
                             <img src="assets/maestro_configuration.png"
                                 style="width: 100%; max-width: 300px; border-radius: 8px;"
                                 alt="Configuración de Parámetros">
@@ -989,19 +1006,19 @@
                             <img src="assets/maestro_temp_soft.png"
                                 style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;" alt="Temp Suave">
                             <p><strong>Suave (Vitrina):</strong> Mayor PAC para mantener el helado servible a
-                                temperaturas más altas (-11°C).</p>
+                                temperaturas altas (entre <strong>-5°C y -11°C</strong>).</p>
                         </div>
                         <div class="param-card">
                             <img src="assets/maestro_temp_standard.png"
                                 style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;" alt="Temp Estándar">
                             <p><strong>Estándar:</strong> El punto de equilibrio ideal para la mayoría de vitrinas
-                                profesionales (-14°C).</p>
+                                profesionales (entre <strong>-12°C y -17°C</strong>).</p>
                         </div>
                         <div class="param-card">
                             <img src="assets/maestro_temp_hard.png"
                                 style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;" alt="Temp Duro">
-                            <p><strong>Duro (Congelador):</strong> Menor PAC para evitar que el helado se vuelva piedra
-                                en congeladores domésticos (-18°C).</p>
+                            <p><strong>Duro (Congelador):</strong> Menor PAC para evitar que se vuelva piedra en
+                                congeladores domésticos (entre <strong>-18°C y -24°C</strong>).</p>
                         </div>
                     </div>
 
@@ -1416,9 +1433,10 @@
         const searchInput = document.getElementById('manualSearch');
         const clearSearch = document.getElementById('clearSearch');
         const searchBtn = document.getElementById('searchBtn');
+        const searchToggle = document.getElementById('searchToggle');
         const noResults = document.getElementById('noResults');
 
-        function performSearch(shouldScroll = true) {
+        function performSearch(shouldScroll = true, shouldCloseMenu = false) {
             const term = searchInput.value.toLowerCase().trim();
             const words = term.split(/\s+/).filter(w => w.length > 0);
             let hasResults = false;
@@ -1441,25 +1459,40 @@
             });
 
             noResults.style.display = hasResults ? 'none' : 'block';
-            if (shouldScroll && term !== "") window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (shouldScroll && term !== "") {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            if (shouldCloseMenu && window.innerWidth < 768 && sidebar.classList.contains('open')) {
+                toggleMenu();
+            }
         }
 
         searchInput.addEventListener('input', () => {
-            if (searchInput.value.trim() === "") performSearch(false);
-            else clearSearch.style.display = 'flex';
+            performSearch(false, false);
         });
 
-        searchBtn.addEventListener('click', () => performSearch(true));
+        searchBtn.addEventListener('click', () => performSearch(true, true));
 
         clearSearch.addEventListener('click', () => {
             searchInput.value = '';
-            performSearch(false);
+            performSearch(false, false);
             searchInput.focus();
         });
 
         searchInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') performSearch(true);
+            if (e.key === 'Enter') performSearch(true, true);
         });
+
+        if (searchToggle) {
+            searchToggle.addEventListener('click', () => {
+                if (!sidebar.classList.contains('open')) {
+                    toggleMenu();
+                }
+                setTimeout(() => searchInput.focus(), 300);
+            });
+        }
     </script>
 </body>
 
