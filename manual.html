@@ -574,7 +574,7 @@
             </div>
             <ul class="nav-list">
                 <li class="nav-item"><a href="#intro" class="nav-link active">Introducción</a></li>
-                <li class="nav-item"><a href="#calculadora" class="nav-link">Panel de Indicadores</a></li>
+                <li class="nav-item"><a href="#calculadora" class="nav-link">Crear Nueva Fórmula y Editar</a></li>
                 <li class="nav-item"><a href="#maestro" class="nav-link">Maestro Heladero</a></li>
                 <li class="nav-item"><a href="#ingredientes" class="nav-link">Mis Ingredientes</a></li>
                 <li class="nav-item"><a href="#recetario" class="nav-link">Tu Recetario</a></li>
@@ -677,7 +677,8 @@
             </section>
 
             <section id="calculadora">
-                <h2>1. Panel de Indicadores <span class="mdi mdi-pencil-plus" style="color:var(--primary)"></span></h2>
+                <h2>1. Crear Nueva Fórmula y Editar <span class="mdi mdi-pencil-plus"
+                        style="color:var(--primary)"></span></h2>
                 <div class="section-card">
                     <p>El laboratorio central de la app. Aquí es donde diseñas tus recetas con control total sobre cada
                         gramo y monitoreas el equilibrio técnico al instante.</p>
@@ -690,6 +691,11 @@
                     </div>
 
                     <h3>El Panel de Indicadores</h3>
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <img src="assets/indicator_panel_new.png"
+                            style="width: 100%; max-width: 500px; border-radius: 12px; border: 1px solid var(--border);"
+                            alt="Panel de Indicadores">
+                    </div>
                     <p>En la parte superior verás 8 indicadores que se actualizan en <strong>tiempo real</strong>.
                         Entender estas siglas es clave para controlar el resultado final de tu helado. Puedes consultar
                         la <strong>Guía de Rangos Recomendados</strong> más abajo para orientarte sobre los valores
@@ -874,29 +880,6 @@
                                 style="height: 30px; vertical-align: middle;" alt="Bases Maestras">) para cargar una
                             estructura equilibrada y empezar a modificarla.</li>
                     </ul>
-
-                    <h3>Gestión de Ingredientes</h3>
-                    <p>Añade y ajusta tus materias primas con precisión profesional:</p>
-                    <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
-                        <div class="info-row">
-                            <img src="assets/icon_eye.png" style="width: 32px;" alt="Vista Rápida">
-                            <div>
-                                <strong>Vista Rápida:</strong> Toca el icono del ojo para ver los parámetros
-                                nutricionales (POD, PAC, etc.) de un ingrediente específico sin salir del editor.
-                                <br><img src="assets/ingredient_quick_view.png"
-                                    style="width: 100%; max-width: 300px; margin-top: 10px; border-radius: 4px; border: 1px solid var(--border);"
-                                    alt="Quick View Modal">
-                            </div>
-                        </div>
-                        <div class="info-row error">
-                            <img src="assets/icon_trash.png" style="width: 32px;" alt="Eliminar">
-                            <div>
-                                <strong>Eliminar:</strong> Usa la papelera rosa para quitar ingredientes de la
-                                composición al instante.
-                            </div>
-                        </div>
-                    </div>
-
                     <h3>Barra de Acciones</h3>
                     <div style="text-align: center; margin-bottom: 1rem;">
                         <img src="assets/action_bar.png"
@@ -912,6 +895,51 @@
                             fácilmente.</li>
                     </ul>
 
+                    <h3>Tarjeta de Ingrediente</h3>
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <img src="assets/ingredient_card.png"
+                            style="width: 100%; max-width: 350px; border-radius: 8px; border: 1px solid var(--border);"
+                            alt="Tarjeta de Ingrediente">
+                    </div>
+                    <p>Controla cada ingrediente de forma individual con las herramientas de la tarjeta:</p>
+                    <ul>
+                        <li><strong>Seleccionar ingrediente:</strong> Escribe para buscar y filtrar cualquier
+                            ingrediente de tu base de datos al instante.</li>
+                        <li><strong>Botones + / -:</strong> Aumenta o disminuye la cantidad rápidamente.
+                            <span
+                                style="color:var(--text-secondary); font-size: 0.9rem; display: block; margin-top: 4px;">
+                                <span class="mdi mdi-information-outline"></span>
+                                <em>Tip: Puedes ajustar cuánto aumenta cada pulsación (ej: de 1g en 1g o de 5g en 5g)
+                                    desde el menú de <strong>Ajustes</strong>.</em>
+                            </span>
+                        </li>
+                        <li><strong>Botón de Arrastre (<img src="assets/icon_reorder.png"
+                                    style="height: 20px; vertical-align: middle;" alt="Reordenar">):</strong> Mantén
+                            pulsado y
+                            desliza las dos rayas laterales del borde derecho para cambiar el orden de los ingredientes
+                            en tu lista.</li>
+                    </ul>
+
+                    <div class="info-row error" style="margin-top: 2rem;">
+                        <img src="assets/icon_trash.png" style="width: 32px;" alt="Eliminar">
+                        <div>
+                            <strong>Eliminar:</strong> Usa la papelera rosa para quitar ingredientes de la
+                            composición al instante.
+                        </div>
+                    </div>
+
+                    <div class="info-row" style="margin-top: 1.5rem;">
+                        <img src="assets/icon_eye_pink.png" style="width: 32px;" alt="Vista Rápida">
+                        <div>
+                            <strong>Vista Rápida (<span class="mdi mdi-eye-outline"></span>):</strong> Toca el icono del
+                            ojo rosa en la tarjeta para abrir el desglose técnico del ingrediente (POD, PAC, etc.) de
+                            forma instantánea y consultar los valores sin interrumpir tu flujo de trabajo.
+                            <br><img src="assets/quick_view_modal_new.png"
+                                style="width: 100%; max-width: 350px; margin-top: 10px; border-radius: 12px; border: 1px solid var(--border);"
+                                alt="Valores Nutricionales">
+                        </div>
+                    </div>
+
                     <h3>Ver Gráfico de Balance</h3>
                     <div style="text-align: center; margin-bottom: 1.5rem;">
                         <img src="assets/balance_button.png" style="width: 100%; max-width: 250px; margin-bottom: 1rem;"
@@ -923,6 +951,17 @@
                         <p class="screenshot-caption">El radar visual te permite ver de un vistazo si los 6 parámetros
                             clave están dentro de la zona verde (ideal).</p>
                     </div>
+
+                    <h3>Información Adicional</h3>
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <img src="assets/additional_info_new.png"
+                            style="width: 100%; max-width: 450px; border-radius: 12px; border: 1px solid var(--border);"
+                            alt="Información Adicional">
+                    </div>
+                    <p>En la parte inferior de la pantalla (tanto al crear como al editar), encontrarás este panel
+                        desplegable. Sirve para documentar tu receta con una <strong>Descripción</strong> breve y añadir
+                        <strong>Notas</strong> detalladas sobre el proceso, variaciones o consejos específicos para esta
+                        fórmula.</p>
 
                     <h3>Sugerencias del Maestro</h3>
                     <p>Cuando la app detecta un desequilibrio técnico (valores en rosa), el Maestro te ofrecerá
