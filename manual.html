@@ -400,8 +400,11 @@
 <body>
 
     <div class="mobile-header">
-        <a href="#" style="text-decoration: none; color: var(--primary); font-weight: 800; font-size: 1rem;">ICE CREAM
-            MIX</a>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <img src="assets/logo.png" style="height: 32px; width: auto;" alt="Logo">
+            <a href="#" style="text-decoration: none; color: var(--primary); font-weight: 800; font-size: 1rem;">ICE
+                CREAM MIX</a>
+        </div>
         <button class="menu-toggle" id="menuToggle">
             <i data-feather="menu"></i>
         </button>
@@ -412,7 +415,10 @@
     <div class="page-wrapper">
         <!-- Sidebar -->
         <nav class="sidebar">
-            <a href="#" class="sidebar-brand">Ice Cream Mix</a>
+            <a href="#" class="sidebar-brand" style="display: flex; align-items: center; gap: 0.75rem;">
+                <img src="assets/logo.png" style="height: 40px; width: auto;" alt="Logo">
+                <span>Ice Cream Mix</span>
+            </a>
             <ul class="nav-list">
                 <li class="nav-item"><a href="#intro" class="nav-link active">Introducción</a></li>
                 <li class="nav-item"><a href="#calculadora" class="nav-link">Panel de Indicadores</a></li>
@@ -428,12 +434,9 @@
         <main class="main-content">
 
             <section id="intro">
-                <div class="header-container"
-                    style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
-                    <img src="assets/logo.png" style="height: 60px; width: auto;" alt="Ice Cream Mix Logo">
-                    <h1 style="margin: 0;">Manual de Usuario</h1>
-                </div>
-                <p class="lead">Domina la ciencia del helado artesanal con precisión, tecnología y un flujo de trabajo
+                <h1 style="margin: 0;">Manual de Usuario</h1>
+                <p class="lead" style="margin-top: 0.5rem;">Domina la ciencia del helado artesanal con precisión,
+                    tecnología y un flujo de trabajo
                     profesional.</p>
 
                 <div class="section-card">
