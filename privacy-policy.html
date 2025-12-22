@@ -1,191 +1,266 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privacidad - Ice Cream Mix</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Política de Privacidad – Ice Cream Mix</title>
+    <meta name="description"
+        content="Política de Privacidad de Ice Cream Mix (iOS). Última actualización: 22/12/2025." />
     <style>
+        :root {
+            --bg: #ffffff;
+            --fg: #111827;
+            --muted: #6b7280;
+            --card: #f9fafb;
+            --border: #e5e7eb;
+            --accent: #111827;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.6
+        }
+
+        header {
+            padding: 32px 16px;
+            border-bottom: 1px solid var(--border);
+            background: var(--card)
+        }
+
+        main {
+            max-width: 920px;
             margin: 0 auto;
-            padding: 20px;
-            color: #333;
+            padding: 28px 16px 64px
         }
 
         h1 {
-            color: #FF6B9D;
-            border-bottom: 3px solid #FF6B9D;
-            padding-bottom: 10px;
+            margin: 0 0 6px;
+            font-size: 28px;
+            line-height: 1.2
+        }
+
+        .updated {
+            margin: 0;
+            color: var(--muted)
         }
 
         h2 {
-            color: #FF6B9D;
-            margin-top: 30px;
+            margin-top: 28px;
+            font-size: 20px
         }
 
-        h3 {
-            color: #666;
+        p,
+        li {
+            font-size: 16px
         }
 
-        .update-date {
-            color: #666;
-            font-style: italic;
+        ul {
+            padding-left: 20px
         }
 
-        .placeholder {
-            background-color: #fff3cd;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-weight: bold;
+        .box {
+            border: 1px solid var(--border);
+            background: var(--card);
+            padding: 14px 16px;
+            border-radius: 12px
+        }
+
+        .note {
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 6px
         }
 
         a {
-            color: #FF6B9D;
+            color: var(--accent);
+            text-decoration: underline
+        }
+
+        footer {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 18px 16px 40px;
+            color: var(--muted);
+            border-top: 1px solid var(--border)
+        }
+
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 6px
         }
     </style>
 </head>
 
 <body>
-    <h1>Política de Privacidad - Ice Cream Mix</h1>
-    <p class="update-date"><strong>Última actualización:</strong> Diciembre 2024</p>
+    <header>
+        <div style="max-width:920px;margin:0 auto;">
+            <h1>Política de Privacidad – Ice Cream Mix</h1>
+            <p class="updated"><strong>Última actualización:</strong> 22/12/2025</p>
+        </div>
+    </header>
 
-    <h2>1. Introducción</h2>
-    <p>Ice Cream Mix ("nosotros", "nuestro" o "la aplicación") respeta tu privacidad y se compromete a proteger tus
-        datos personales. Esta política de privacidad te informará sobre cómo manejamos tus datos personales cuando usas
-        nuestra aplicación móvil.</p>
+    <main>
+        <p>
+            Ice Cream Mix respeta tu privacidad y se compromete a proteger la información de los usuarios.
+            Esta Política de Privacidad describe cómo se recopila, utiliza y protege la información cuando
+            utilizas la aplicación móvil <strong>Ice Cream Mix</strong>, disponible exclusivamente para dispositivos
+            Apple (iOS).
+        </p>
 
-    <h2>2. Información que Recopilamos</h2>
+        <h2>1. Responsable del tratamiento</h2>
+        <div class="box">
+            <p style="margin:0;">
+                <strong>Ice Cream Mix</strong><br />
+                Correo electrónico de contacto: <a href="mailto:rogeriocsan@gmail.com">rogeriocsan@gmail.com</a><br />
+                Sitio web: <a href="https://appverifier.github.io/icecreamix/"
+                    rel="noopener noreferrer">https://appverifier.github.io/icecreamix/</a>
+            </p>
+        </div>
 
-    <h3>2.1 Información que Proporcionas</h3>
-    <ul>
-        <li><strong>Nombre de usuario:</strong> Para personalizar tu experiencia</li>
-        <li><strong>Fórmulas de helado:</strong> Las recetas que creas y guardas</li>
-        <li><strong>Ingredientes personalizados:</strong> Ingredientes que añades a tu base de datos</li>
-    </ul>
+        <h2>2. Información que recopilamos</h2>
 
-    <h3>2.2 Información Recopilada Automáticamente</h3>
-    <ul>
-        <li><strong>Datos de uso:</strong> Cómo interactúas con la aplicación</li>
-        <li><strong>Información del dispositivo:</strong> Modelo, sistema operativo, identificadores únicos</li>
-        <li><strong>Datos de crashes:</strong> Para mejorar la estabilidad de la app</li>
-    </ul>
+        <h3>2.1 Información proporcionada por el usuario</h3>
+        <p>La app puede recopilar información que el usuario introduce de forma voluntaria, como:</p>
+        <ul>
+            <li>Recetas y fórmulas de helados o sorbetes</li>
+            <li>Ingredientes personalizados añadidos por el usuario</li>
+            <li>Preferencias de uso dentro de la app</li>
+        </ul>
+        <p><strong>No solicitamos nombre real, dirección postal, número de teléfono ni datos bancarios.</strong></p>
 
-    <h3>2.3 Información de Cámara</h3>
-    <ul>
-        <li><strong>Escaneo de etiquetas:</strong> Usamos tu cámara para escanear información nutricional</li>
-        <li><strong>Las imágenes NO se almacenan:</strong> Solo procesamos el texto y descartamos la imagen</li>
-    </ul>
+        <h3>2.2 Información recopilada automáticamente</h3>
+        <p>Al usar la aplicación, se recopilan de forma automática ciertos datos técnicos:</p>
+        <ul>
+            <li>Datos de uso de la app (pantallas visitadas, interacciones)</li>
+            <li>Información del dispositivo (modelo, versión de iOS)</li>
+            <li>Identificadores técnicos anónimos</li>
+            <li>Informes de errores y fallos ("crash reports")</li>
+        </ul>
+        <p>Estos datos se utilizan exclusivamente para mejorar la estabilidad, seguridad y rendimiento de la aplicación.
+        </p>
 
-    <h2>3. Cómo Usamos tu Información</h2>
-    <p>Usamos la información recopilada para:</p>
-    <ul>
-        <li>Proporcionar y mantener nuestra aplicación</li>
-        <li>Personalizar tu experiencia</li>
-        <li>Mejorar nuestros servicios</li>
-        <li>Procesar tus suscripciones</li>
-        <li>Enviar notificaciones importantes</li>
-        <li>Analizar el uso de la aplicación</li>
-        <li>Detectar y prevenir problemas técnicos</li>
-    </ul>
+        <h3>2.3 Uso de la cámara</h3>
+        <p>Ice Cream Mix puede solicitar acceso a la <strong>cámara del dispositivo</strong> para:</p>
+        <ul>
+            <li>Escanear etiquetas nutricionales y tablas de ingredientes</li>
+        </ul>
+        <p><strong>Importante:</strong></p>
+        <ul>
+            <li>Las imágenes <strong>no se almacenan</strong></li>
+            <li>No se envían a servidores externos</li>
+            <li>No se comparten con terceros</li>
+            <li>El procesamiento se realiza localmente en el dispositivo</li>
+        </ul>
 
-    <h2>4. Servicios de Terceros</h2>
+        <h2>3. Uso de la información</h2>
+        <p>La información recopilada se utiliza únicamente para:</p>
+        <ul>
+            <li>Proporcionar las funciones principales de la app</li>
+            <li>Realizar cálculos y formulaciones de helado</li>
+            <li>Personalizar la experiencia del usuario</li>
+            <li>Mejorar el rendimiento y la estabilidad</li>
+            <li>Gestionar suscripciones y acceso a funciones premium</li>
+        </ul>
 
-    <h3>4.1 Firebase (Google)</h3>
-    <p>Usamos Firebase para:</p>
-    <ul>
-        <li>Autenticación de usuarios</li>
-        <li>Almacenamiento de datos (Firestore)</li>
-        <li>Analytics</li>
-        <li>Crash reporting</li>
-    </ul>
-    <p><a href="https://firebase.google.com/support/privacy" target="_blank">Política de Privacidad de Firebase</a></p>
+        <h2>4. Inteligencia artificial y cálculos</h2>
+        <p>Ice Cream Mix utiliza sistemas automáticos de cálculo y lógica avanzada para generar fórmulas.</p>
+        <ul>
+            <li>Los datos del usuario <strong>no se utilizan para entrenar modelos de IA</strong></li>
+            <li>No se comparten con sistemas externos para aprendizaje</li>
+            <li>Las fórmulas permanecen vinculadas únicamente al uso funcional de la app</li>
+        </ul>
 
-    <h3>4.2 RevenueCat</h3>
-    <p>Usamos RevenueCat para gestionar suscripciones in-app.</p>
-    <p><a href="https://www.revenuecat.com/privacy" target="_blank">Política de Privacidad de RevenueCat</a></p>
+        <h2>5. Suscripciones y pagos</h2>
+        <p>Las compras y suscripciones se gestionan exclusivamente a través de <strong>Apple In-App Purchases</strong>.
+        </p>
+        <ul>
+            <li>Ice Cream Mix <strong>no tiene acceso</strong> a datos de pago</li>
+            <li>Apple gestiona toda la información financiera</li>
+            <li>El usuario puede gestionar o cancelar su suscripción desde su Apple ID</li>
+        </ul>
 
-    <h3>4.3 Google Gemini AI</h3>
-    <p>Usamos Gemini AI para generar fórmulas de helado personalizadas. Los datos enviados son:</p>
-    <ul>
-        <li>Tipo de helado deseado</li>
-        <li>Preferencias de ingredientes</li>
-        <li>Parámetros técnicos</li>
-    </ul>
-    <p><strong>No se envían datos personales identificables a Gemini.</strong></p>
-    <p><a href="https://policies.google.com/privacy" target="_blank">Política de Privacidad de Google AI</a></p>
+        <h2>6. Servicios de terceros</h2>
+        <p>
+            La app puede utilizar servicios de terceros para su correcto funcionamiento, como:
+            analítica de uso, gestión técnica de errores e infraestructura en la nube.
+            Estos servicios actúan bajo acuerdos de confidencialidad y cumplen con las normativas de protección de datos
+            aplicables.
+        </p>
 
-    <h3>4.4 ML Kit (Google)</h3>
-    <p>Usamos ML Kit para reconocimiento de texto (OCR) en etiquetas nutricionales. El procesamiento se realiza
-        <strong>localmente en tu dispositivo</strong>.
-    </p>
+        <h2>7. Compartición de datos</h2>
+        <p><strong>Ice Cream Mix no vende, alquila ni comercializa datos personales.</strong></p>
+        <p>Los datos solo podrán compartirse cuando:</p>
+        <ul>
+            <li>Sea requerido por ley</li>
+            <li>Sea necesario para cumplir obligaciones legales</li>
+            <li>Sea imprescindible para el funcionamiento técnico de la app</li>
+        </ul>
 
-    <h2>5. Almacenamiento de Datos</h2>
-    <ul>
-        <li><strong>Ubicación:</strong> Tus datos se almacenan en servidores de Firebase (Google Cloud)</li>
-        <li><strong>Región:</strong> Estados Unidos y Europa</li>
-        <li><strong>Seguridad:</strong> Usamos encriptación en tránsito y en reposo</li>
-        <li><strong>Retención:</strong> Mantenemos tus datos mientras uses la aplicación</li>
-    </ul>
+        <h2>8. Conservación de los datos</h2>
+        <p>
+            Los datos se conservan únicamente durante el tiempo necesario para proporcionar las funcionalidades de la
+            app
+            y cumplir obligaciones legales. El usuario puede solicitar la eliminación de sus datos en cualquier momento.
+        </p>
 
-    <h2>6. Compartir Información</h2>
-    <p><strong>NO vendemos ni compartimos tu información personal con terceros</strong> excepto:</p>
-    <ul>
-        <li>Cuando sea requerido por ley</li>
-        <li>Para proteger nuestros derechos legales</li>
-        <li>Con proveedores de servicios (Firebase, RevenueCat) bajo acuerdos de confidencialidad</li>
-    </ul>
+        <h2>9. Derechos del usuario</h2>
+        <p>El usuario tiene derecho a:</p>
+        <ul>
+            <li>Acceder a sus datos</li>
+            <li>Solicitar la rectificación</li>
+            <li>Solicitar la eliminación</li>
+            <li>Limitar u oponerse al tratamiento</li>
+            <li>Solicitar la portabilidad de datos (cuando aplique)</li>
+        </ul>
+        <p>
+            Para ejercer estos derechos, contacta con:
+            <a href="mailto:rogeriocsan@gmail.com">rogeriocsan@gmail.com</a>
+        </p>
 
-    <h2>7. Tus Derechos</h2>
-    <p>Tienes derecho a:</p>
-    <ul>
-        <li><strong>Acceder</strong> a tus datos personales</li>
-        <li><strong>Corregir</strong> información incorrecta</li>
-        <li><strong>Eliminar</strong> tu cuenta y datos</li>
-        <li><strong>Exportar</strong> tus fórmulas</li>
-        <li><strong>Oponerte</strong> al procesamiento de datos</li>
-    </ul>
-    <p>Para ejercer estos derechos, contáctanos en: <span class="placeholder">rogeriocsan@gmail.com</span></p>
+        <h2>10. Seguridad</h2>
+        <p>Se aplican medidas técnicas y organizativas razonables para proteger la información, incluyendo:</p>
+        <ul>
+            <li>Conexiones seguras</li>
+            <li>Control de accesos</li>
+            <li>Protección frente a accesos no autorizados</li>
+        </ul>
 
-    <h2>8. Seguridad</h2>
-    <p>Implementamos medidas de seguridad apropiadas para proteger tus datos:</p>
-    <ul>
-        <li>Encriptación SSL/TLS</li>
-        <li>Autenticación segura</li>
-        <li>Acceso restringido a datos</li>
-        <li>Monitoreo de seguridad</li>
-    </ul>
+        <h2>11. Privacidad de menores</h2>
+        <p>
+            Ice Cream Mix <strong>no está dirigida a menores de 13 años</strong>.
+            No recopilamos conscientemente datos de menores. Si detectamos información de un menor, será eliminada
+            inmediatamente.
+        </p>
 
-    <h2>9. Privacidad de Menores</h2>
-    <p>Nuestra aplicación NO está dirigida a menores de 13 años. No recopilamos intencionalmente información de menores
-        de 13 años.</p>
+        <h2>12. Cambios en esta política</h2>
+        <p>
+            Esta Política de Privacidad puede actualizarse periódicamente.
+            Los cambios se reflejarán en esta página indicando la fecha de actualización.
+        </p>
 
-    <h2>10. Cambios a esta Política</h2>
-    <p>Podemos actualizar esta política de privacidad ocasionalmente. Te notificaremos de cambios significativos
-        mediante:</p>
-    <ul>
-        <li>Notificación en la aplicación</li>
-        <li>Email (si proporcionaste uno)</li>
-        <li>Actualización de la fecha "Última actualización"</li>
-    </ul>
+        <h2>13. Aceptación</h2>
+        <p>
+            Al utilizar Ice Cream Mix, aceptas esta Política de Privacidad y el tratamiento de datos descrito en ella.
+        </p>
+    </main>
 
-    <h2>11. Contacto</h2>
-    <p>Si tienes preguntas sobre esta política de privacidad, contáctanos:</p>
-    <p><strong>Email:</strong> <span class="placeholder">rogeriocsan@gmail.com</span></p>
-    <p><strong>Sitio web:</strong> <a
-            href="https://appverifier.github.io/icecreamix/">https://appverifier.github.io/icecreamix/</a></p>
-
-    <h2>12. Consentimiento</h2>
-    <p>Al usar Ice Cream Mix, aceptas esta política de privacidad y el procesamiento de tus datos como se describe aquí.
-    </p>
-
-    <hr style="margin: 40px 0; border: none; border-top: 1px solid #ddd;">
-    <p style="text-align: center; color: #666; font-size: 14px;">
-        <a href="index.html">Volver al inicio</a> |
-        <a href="terms-of-service.html">Términos de Servicio</a>
-    </p>
+    <footer>
+        <div>
+            © <span id="year"></span> Ice Cream Mix · Política de Privacidad
+        </div>
+        <script>
+            document.getElementById("year").textContent = new Date().getFullYear();
+        </script>
+    </footer>
 </body>
 
 </html>
