@@ -1,264 +1,241 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Términos de Servicio - Ice Cream Mix</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Términos de Servicio – Ice Cream Mix</title>
+    <meta name="description" content="Términos de Servicio de Ice Cream Mix (iOS). Última actualización: 22/12/2025." />
     <style>
+        :root {
+            --bg: #ffffff;
+            --fg: #111827;
+            --muted: #6b7280;
+            --card: #f9fafb;
+            --border: #e5e7eb;
+            --accent: #111827;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.6
+        }
+
+        header {
+            padding: 32px 16px;
+            border-bottom: 1px solid var(--border);
+            background: var(--card)
+        }
+
+        main {
+            max-width: 920px;
             margin: 0 auto;
-            padding: 20px;
-            color: #333;
+            padding: 28px 16px 64px
         }
 
         h1 {
-            color: #FF6B9D;
-            border-bottom: 3px solid #FF6B9D;
-            padding-bottom: 10px;
+            margin: 0 0 6px;
+            font-size: 28px;
+            line-height: 1.2
+        }
+
+        .updated {
+            margin: 0;
+            color: var(--muted)
         }
 
         h2 {
-            color: #FF6B9D;
-            margin-top: 30px;
+            margin-top: 28px;
+            font-size: 20px
         }
 
-        h3 {
-            color: #666;
+        p,
+        li {
+            font-size: 16px
         }
 
-        .update-date {
-            color: #666;
-            font-style: italic;
+        ul {
+            padding-left: 20px
         }
 
-        .placeholder {
-            background-color: #fff3cd;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-weight: bold;
+        .box {
+            border: 1px solid var(--border);
+            background: var(--card);
+            padding: 14px 16px;
+            border-radius: 12px
+        }
+
+        .note {
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 6px
         }
 
         a {
-            color: #FF6B9D;
+            color: var(--accent);
+            text-decoration: underline
+        }
+
+        footer {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 18px 16px 40px;
+            color: var(--muted);
+            border-top: 1px solid var(--border)
         }
     </style>
 </head>
 
 <body>
-    <h1>Términos de Servicio - Ice Cream Mix</h1>
-    <p class="update-date"><strong>Última actualización:</strong> Diciembre 2024</p>
+    <header>
+        <div style="max-width:920px;margin:0 auto;">
+            <h1>Términos de Servicio – Ice Cream Mix</h1>
+            <p class="updated"><strong>Última actualización:</strong> 22/12/2025</p>
+        </div>
+    </header>
 
-    <h2>1. Aceptación de los Términos</h2>
-    <p>Al descargar, instalar o usar Ice Cream Mix ("la Aplicación"), aceptas estar sujeto a estos Términos de Servicio.
-        Si no aceptas estos términos, no uses la Aplicación.</p>
+    <main>
+        <p>
+            Bienvenido a <strong>Ice Cream Mix</strong>. Estos Términos de Servicio regulan el acceso y uso
+            de la aplicación móvil Ice Cream Mix, disponible para dispositivos Apple (iOS).
+            Al descargar o utilizar la app, aceptas estos términos en su totalidad.
+        </p>
 
-    <h2>2. Descripción del Servicio</h2>
-    <p>Ice Cream Mix es una aplicación móvil que proporciona:</p>
-    <ul>
-        <li>Herramientas para crear y gestionar fórmulas de helado</li>
-        <li>Calculadora de balance nutricional</li>
-        <li>Generador de fórmulas con IA</li>
-        <li>Escáner de etiquetas nutricionales</li>
-        <li>Base de datos de ingredientes</li>
-        <li>Funciones premium mediante suscripción</li>
-    </ul>
+        <h2>1. Titular de la aplicación</h2>
+        <div class="box">
+            <p style="margin:0;">
+                <strong>Ice Cream Mix</strong><br />
+                Correo electrónico de contacto:
+                <a href="mailto:rogeriocsan@gmail.com">rogeriocsan@gmail.com</a><br />
+                Sitio web:
+                <a href="https://appverifier.github.io/icecreamix/" rel="noopener noreferrer">
+                    https://appverifier.github.io/icecreamix/
+                </a>
+            </p>
+        </div>
 
-    <h2>3. Licencia de Uso</h2>
+        <h2>2. Objeto de la aplicación</h2>
+        <p>
+            Ice Cream Mix es una aplicación de formulación de helados y sorbetes que permite al usuario:
+        </p>
+        <ul>
+            <li>Crear y ajustar fórmulas de helado y sorbete</li>
+            <li>Calcular parámetros técnicos (POD, PAC, sólidos, agua, etc.)</li>
+            <li>Gestionar ingredientes y recetas personalizadas</li>
+            <li>Escanear etiquetas nutricionales con la cámara del dispositivo</li>
+        </ul>
+        <p>
+            La app tiene un propósito <strong>técnico y gastronómico</strong>.
+            No sustituye formación profesional ni asesoramiento alimentario, sanitario o legal.
+        </p>
 
-    <h3>3.1 Concesión de Licencia</h3>
-    <p>Te otorgamos una licencia limitada, no exclusiva, no transferible y revocable para usar la Aplicación para tu uso
-        personal y no comercial.</p>
+        <h2>3. Requisitos de uso</h2>
+        <ul>
+            <li>Tener al menos <strong>13 años</strong></li>
+            <li>Disponer de un dispositivo compatible con iOS</li>
+            <li>Usar la app conforme a la ley y a estos términos</li>
+        </ul>
 
-    <h3>3.2 Restricciones</h3>
-    <p>NO puedes:</p>
-    <ul>
-        <li>Modificar, copiar o distribuir la Aplicación</li>
-        <li>Realizar ingeniería inversa</li>
-        <li>Usar la Aplicación para fines ilegales</li>
-        <li>Revender o sublicenciar el acceso</li>
-        <li>Extraer datos mediante scraping o bots</li>
-    </ul>
+        <h2>4. Cuenta y uso personal</h2>
+        <p>
+            El acceso a la app es personal e intransferible.
+            El usuario es responsable del uso que haga de la aplicación y de la información que introduzca en ella.
+        </p>
 
-    <h2>4. Cuentas de Usuario</h2>
+        <h2>5. Suscripciones y funciones premium</h2>
+        <p>
+            Ice Cream Mix puede ofrecer funcionalidades avanzadas mediante suscripción.
+            Las suscripciones se gestionan exclusivamente a través de
+            <strong>Apple In-App Purchases</strong>.
+        </p>
+        <ul>
+            <li>Los pagos son gestionados por Apple</li>
+            <li>Ice Cream Mix no almacena datos bancarios</li>
+            <li>Las suscripciones se renuevan automáticamente salvo cancelación</li>
+            <li>La cancelación se gestiona desde el Apple ID del usuario</li>
+        </ul>
 
-    <h3>4.1 Creación de Cuenta</h3>
-    <ul>
-        <li>Debes proporcionar información precisa</li>
-        <li>Eres responsable de mantener la seguridad de tu cuenta</li>
-        <li>Debes notificarnos inmediatamente de cualquier uso no autorizado</li>
-    </ul>
+        <h2>6. Uso correcto de la aplicación</h2>
+        <p>El usuario se compromete a:</p>
+        <ul>
+            <li>No utilizar la app con fines ilícitos</li>
+            <li>No intentar acceder a sistemas internos o código fuente</li>
+            <li>No copiar, modificar ni distribuir la app sin autorización</li>
+            <li>No usar la app para generar resultados engañosos o fraudulentos</li>
+        </ul>
 
-    <h3>4.2 Terminación de Cuenta</h3>
-    <p>Podemos suspender o terminar tu cuenta si:</p>
-    <ul>
-        <li>Violas estos términos</li>
-        <li>Usas la Aplicación de manera fraudulenta</li>
-        <li>No pagas las suscripciones</li>
-    </ul>
+        <h2>7. Propiedad intelectual</h2>
+        <p>
+            Todos los derechos de propiedad intelectual de la app, su diseño, textos, lógica,
+            cálculos y estructura pertenecen a Ice Cream Mix.
+        </p>
+        <p>
+            Las recetas y fórmulas creadas por el usuario son de su propiedad,
+            pero la app conserva los derechos sobre el sistema de cálculo y presentación.
+        </p>
 
-    <h2>5. Suscripciones y Pagos</h2>
+        <h2>8. Disponibilidad y mantenimiento</h2>
+        <p>
+            Ice Cream Mix se esfuerza por mantener la app operativa, pero no garantiza
+            disponibilidad continua ni ausencia de errores.
+            Pueden realizarse actualizaciones, mejoras o interrupciones técnicas.
+        </p>
 
-    <h3>5.1 Plan Gratuito</h3>
-    <p>Incluye:</p>
-    <ul>
-        <li>Calculadora de balance ilimitada (sin guardar)</li>
-        <li>Creación y guardado de fórmulas (límite: 3 fórmulas de por vida)</li>
-        <li>Edición de fórmulas guardadas (límite: 5 ediciones por fórmula)</li>
-        <li>Ingredientes personalizados (límite: 2 ingredientes de por vida)</li>
-        <li>Edición de ingredientes personalizados (límite: 2 ediciones por ingrediente)</li>
-        <li>Acceso a base de datos de ingredientes</li>
-    </ul>
-    <h3>5.2 Plan PRO (Suscripción)</h3>
-    <p>Incluye:</p>
-    <ul>
-        <li>Fórmulas manuales ilimitadas</li>
-        <li>Ediciones ilimitadas de fórmulas</li>
-        <li>Ingredientes personalizados ilimitados</li>
-        <li>Ediciones ilimitadas de ingredientes</li>
-        <li>Generador con IA (200 fórmulas/mes)</li>
-        <li>Formulación profesional (5 usos/mes)</li>
-        <li>Recetas base premium</li>
-        <li>Sin anuncios (si aplica)</li>
-    </ul>
-    <h3>5.3 Facturación</h3>
-    <ul>
-        <li>Las suscripciones se cobran mensual o anualmente</li>
-        <li>Los pagos se procesan a través de Apple In-App Purchase</li>
-        <li>Los precios están en tu moneda local</li>
-        <li>Renovación automática a menos que canceles</li>
-    </ul>
+        <h2>9. Limitación de responsabilidad</h2>
+        <p>
+            Ice Cream Mix no será responsable de:
+        </p>
+        <ul>
+            <li>Errores derivados del uso incorrecto de la app</li>
+            <li>Resultados obtenidos a partir de datos introducidos por el usuario</li>
+            <li>Daños derivados del uso profesional o comercial de las fórmulas</li>
+        </ul>
+        <p>
+            El usuario es el único responsable de validar las recetas antes de su producción,
+            comercialización o consumo.
+        </p>
 
-    <h3>5.4 Cancelación y Reembolsos</h3>
-    <ul>
-        <li>Puedes cancelar en cualquier momento desde Ajustes de iOS</li>
-        <li>La cancelación es efectiva al final del período actual</li>
-        <li>No hay reembolsos por períodos parciales</li>
-        <li>Reembolsos según la política de Apple</li>
-    </ul>
+        <h2>10. Protección de datos</h2>
+        <p>
+            El tratamiento de datos personales se rige por la
+            <a href="privacy-policy.html">Política de Privacidad</a>,
+            que forma parte integrante de estos Términos de Servicio.
+        </p>
 
-    <h2>6. Contenido Generado por IA</h2>
+        <h2>11. Modificaciones de los términos</h2>
+        <p>
+            Ice Cream Mix se reserva el derecho de modificar estos Términos de Servicio.
+            Las modificaciones se publicarán en esta página indicando la fecha de actualización.
+        </p>
 
-    <h3>6.1 Uso de IA</h3>
-    <ul>
-        <li>Las fórmulas generadas por IA son sugerencias</li>
-        <li>No garantizamos resultados específicos</li>
-        <li>Debes verificar la seguridad alimentaria</li>
-        <li>No somos responsables de resultados adversos</li>
-    </ul>
+        <h2>12. Legislación aplicable</h2>
+        <p>
+            Estos Términos de Servicio se rigen por la legislación española y europea.
+            Cualquier conflicto se someterá a los tribunales competentes conforme a la ley aplicable.
+        </p>
 
-    <h3>6.2 Limitaciones</h3>
-    <ul>
-        <li>La IA puede cometer errores</li>
-        <li>Las fórmulas deben ser revisadas por profesionales</li>
-        <li>No sustituye el conocimiento profesional de heladería</li>
-    </ul>
+        <h2>13. Aceptación</h2>
+        <p>
+            Al utilizar Ice Cream Mix, confirmas que has leído, entendido y aceptado
+            estos Términos de Servicio.
+        </p>
+    </main>
 
-    <h2>7. Propiedad Intelectual</h2>
-
-    <h3>7.1 Nuestra Propiedad</h3>
-    <p>La Aplicación, diseño, código, contenido y marca son propiedad nuestra y están protegidos por derechos de autor.
-    </p>
-
-    <h3>7.2 Tu Contenido</h3>
-    <ul>
-        <li>Mantienes los derechos sobre tus fórmulas</li>
-        <li>Nos otorgas licencia para almacenar y procesar tus datos</li>
-        <li>Podemos usar datos agregados y anónimos para mejorar el servicio</li>
-    </ul>
-
-    <h2>8. Descargo de Responsabilidad</h2>
-
-    <h3>8.1 "TAL CUAL"</h3>
-    <p>La Aplicación se proporciona "tal cual" sin garantías de ningún tipo.</p>
-
-    <h3>8.2 Seguridad Alimentaria</h3>
-    <ul>
-        <li>No garantizamos la seguridad de las fórmulas generadas</li>
-        <li>Eres responsable de verificar ingredientes y proporciones</li>
-        <li>Consulta con profesionales antes de producción comercial</li>
-    </ul>
-
-    <h3>8.3 Disponibilidad</h3>
-    <ul>
-        <li>No garantizamos disponibilidad 100%</li>
-        <li>Podemos realizar mantenimiento sin previo aviso</li>
-        <li>Podemos modificar o discontinuar funciones</li>
-    </ul>
-
-    <h2>9. Limitación de Responsabilidad</h2>
-    <p>En la máxima medida permitida por ley:</p>
-    <ul>
-        <li>No somos responsables de daños indirectos o consecuentes</li>
-        <li>Nuestra responsabilidad máxima es el monto pagado en los últimos 12 meses</li>
-        <li>No somos responsables de pérdida de datos o beneficios</li>
-    </ul>
-
-    <h2>10. Indemnización</h2>
-    <p>Aceptas indemnizarnos de cualquier reclamación derivada de:</p>
-    <ul>
-        <li>Tu uso de la Aplicación</li>
-        <li>Violación de estos términos</li>
-        <li>Violación de derechos de terceros</li>
-    </ul>
-
-    <h2>11. Modificaciones</h2>
-    <p>Podemos modificar estos términos en cualquier momento:</p>
-    <ul>
-        <li>Te notificaremos de cambios significativos</li>
-        <li>El uso continuado constituye aceptación</li>
-        <li>Si no aceptas, deja de usar la Aplicación</li>
-    </ul>
-
-    <h2>12. Terminación</h2>
-    <p>Podemos terminar tu acceso inmediatamente si:</p>
-    <ul>
-        <li>Violas estos términos</li>
-        <li>Usas la Aplicación de manera fraudulenta</li>
-        <li>Por cualquier razón, con o sin causa</li>
-    </ul>
-
-    <h2>13. Ley Aplicable</h2>
-    <p>Estos términos se rigen por las leyes de España.</p>
-
-    <h2>14. Resolución de Disputas</h2>
-    <p>Cualquier disputa se resolverá mediante:</p>
-    <ul>
-        <li>Negociación de buena fe</li>
-        <li>Mediación (si es necesario)</li>
-        <li>Arbitraje vinculante (si aplica en tu jurisdicción)</li>
-    </ul>
-
-    <h2>15. Varios</h2>
-
-    <h3>15.1 Acuerdo Completo</h3>
-    <p>Estos términos constituyen el acuerdo completo entre tú y nosotros.</p>
-
-    <h3>15.2 Divisibilidad</h3>
-    <p>Si alguna disposición es inválida, las demás permanecen en vigor.</p>
-
-    <h3>15.3 Renuncia</h3>
-    <p>La falta de ejercicio de un derecho no constituye renuncia.</p>
-
-    <h2>16. Contacto</h2>
-    <p>Para preguntas sobre estos términos:</p>
-    <p><strong>Email:</strong> <span class="placeholder">rogeriocsan@gmail.com</span></p>
-    <p><strong>Sitio web:</strong> <a
-            href="https://appverifier.github.io/icecreamix/">https://appverifier.github.io/icecreamix/</a></p>
-
-    <hr style="margin: 40px 0;">
-    <p style="text-align: center; font-weight: bold;">
-        Al usar Ice Cream Mix, confirmas que has leído, entendido y aceptado estos Términos de Servicio.
-    </p>
-
-    <hr style="margin: 40px 0; border: none; border-top: 1px solid #ddd;">
-    <p style="text-align: center; color: #666; font-size: 14px;">
-        <a href="index.html">Volver al inicio</a> |
-        <a href="privacy-policy.html">Política de Privacidad</a>
-    </p>
+    <footer>
+        <div>
+            © <span id="year"></span> Ice Cream Mix · Términos de Servicio
+        </div>
+        <script>
+            document.getElementById("year").textContent = new Date().getFullYear();
+        </script>
+    </footer>
 </body>
 
 </html>
