@@ -540,7 +540,7 @@
 
     <div class="mobile-header">
         <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <img src="assets/logo.png" style="height: 32px; width: auto;" alt="Logo">
+            <img src="assets/app-icon.png" style="height: 32px; width: 32px; border-radius: 6px;" alt="Logo">
             <a href="#" style="text-decoration: none; color: var(--primary); font-weight: 800; font-size: 1rem;">ICE
                 CREAM MIX</a>
         </div>
@@ -560,18 +560,10 @@
         <!-- Sidebar -->
         <nav class="sidebar">
             <a href="#" class="sidebar-brand" style="display: flex; align-items: center; gap: 0.75rem;">
-                <img src="assets/logo.png" style="height: 40px; width: auto;" alt="Logo">
+                <img src="assets/app-icon.png" style="height: 40px; width: 40px; border-radius: 8px;" alt="Logo">
                 <span>Ice Cream Mix</span>
             </a>
-            <div class="search-container">
-                <input type="text" id="manualSearch" placeholder="Buscar temas, ingredientes...">
-                <button id="clearSearch" class="search-btn" title="Limpiar">
-                    <i data-feather="x"></i>
-                </button>
-                <button id="searchBtn" class="search-btn primary" title="Buscar">
-                    <i data-feather="search"></i>
-                </button>
-            </div>
+
             <ul class="nav-list">
                 <li class="nav-item"><a href="#intro" class="nav-link active">Introducción</a></li>
                 <li class="nav-item"><a href="#calculadora" class="nav-link">Crear Nueva Fórmula y Editar</a></li>
@@ -1741,70 +1733,7 @@
 
         sections.forEach(section => observer.observe(section));
 
-        // Search Functionality
-        const searchInput = document.getElementById('manualSearch');
-        const clearSearch = document.getElementById('clearSearch');
-        const searchBtn = document.getElementById('searchBtn');
-        const searchToggle = document.getElementById('searchToggle');
-        const noResults = document.getElementById('noResults');
 
-        function performSearch(shouldScroll = true, shouldCloseMenu = false) {
-            const term = searchInput.value.toLowerCase().trim();
-            const words = term.split(/\s+/).filter(w => w.length > 0);
-            let hasResults = false;
-
-            clearSearch.style.display = term ? 'flex' : 'none';
-
-            sections.forEach(section => {
-                const text = section.innerText.toLowerCase();
-                const sectionId = section.getAttribute('id');
-                const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-
-                const matches = words.length === 0 || words.every(word => text.includes(word));
-
-                section.style.display = matches ? 'block' : 'none';
-                if (navLink && navLink.parentElement) {
-                    navLink.parentElement.style.display = matches ? 'block' : 'none';
-                }
-
-                if (matches) hasResults = true;
-            });
-
-            noResults.style.display = hasResults ? 'none' : 'block';
-
-            if (shouldScroll && term !== "") {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-
-            if (shouldCloseMenu && window.innerWidth < 768 && sidebar.classList.contains('open')) {
-                toggleMenu();
-            }
-        }
-
-        searchInput.addEventListener('input', () => {
-            performSearch(false, false);
-        });
-
-        searchBtn.addEventListener('click', () => performSearch(true, true));
-
-        clearSearch.addEventListener('click', () => {
-            searchInput.value = '';
-            performSearch(false, false);
-            searchInput.focus();
-        });
-
-        searchInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') performSearch(true, true);
-        });
-
-        if (searchToggle) {
-            searchToggle.addEventListener('click', () => {
-                if (!sidebar.classList.contains('open')) {
-                    toggleMenu();
-                }
-                setTimeout(() => searchInput.focus(), 300);
-            });
-        }
     </script>
 </body>
 
